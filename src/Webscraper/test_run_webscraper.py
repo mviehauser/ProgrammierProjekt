@@ -6,4 +6,5 @@
 def run_webscraper():
     #...
 
-run_webscraper()
+if __name__ == '__main__':
+    run_webscraper()
