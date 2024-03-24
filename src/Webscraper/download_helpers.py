@@ -7,13 +7,12 @@ from os import remove
 from os.path import exists
 
 
-
 """
 Downloads a PDF from the Web
 
 'local_filename = url.split('/')[-1]' : file is named after the last part in the url
 
-'headers = headers' : provides a new User-Agent to bypass bot-detection (see constants)
+'headers = HEADERS' : provides a new User-Agent to bypass bot-detection (see constants)
 """
 def download_pdf(pdf_url):
     local_filename = pdf_url.split('/')[-1]
@@ -26,8 +25,9 @@ def download_pdf(pdf_url):
 
 
 """
-All relevant pdf urls follow this RegEx: /images/monographs/ at the start, .pdf at the end
+Doesn't need a Argument, because the url of cfsre is seen as a constant
 
+Returns a list of strings, containing all Links to NPS pdfs
 
 """
 def create_list_urls():
@@ -35,33 +35,32 @@ def create_list_urls():
 
     soup = BeautifulSoup(page_to_scrape.text, features = "html.parser")
 
-    links = [a['href'] for a in soup.find_all('a',href=True)]
+    links = []
+
+    # .find_all('a', href = True) finds all anchor-elements and puts everything from <a> to </a> in a list
+    # by using ['href'], we only refer to the string past 'href ='
+    # all relevant pdf-links have "/images/monographs" and ".pdf" as substrings
+    # since these are relative links, it's important to put "https://www.cfsre.org" in front
+
+    for a in soup.find_all('a', href = True):
+        if ("/images/monographs" in a['href']) and (".pdf" in a['href']):
+            links+= ["https://www.cfsre.org" + a['href'].strip()]
     
     return links
-    #An die passenden Links muss von vorne auch noch "https://www.cfsre.org" angehänt werden
 
-
-"""
-Recieves a list of Strings, containing all links on the website.
-Returns a list of Strings, with NPS pdf-links
-
-Noch in Arbeit
-"""
-def filter_list(links):
-    filtered_list = []
-    # temporary for testing:
-    for link in links:
-        if ("/images/monographs" in link) and (".pdf" in link):
-            filtered_list +=["https://www.cfsre.org" + link.strip()]
-            print("https://www.cfsre.org" + link.strip())
-    
-    return filtered_list
 
 def delete_file(filename):
     if exists(filename):
         remove(filename)
 
-#Test
-print(len(filter_list(create_list_urls())))
-# liefert 154 pdf Elemente
-# Maxi wieviel passende sind auf der website?
+"""
+# Test:
+links = create_list_urls()
+print(links)
+print(len(links))
+download_pdf(links[100])
+print(links[100])
+delete_file(links[100].split('/')[-1])
+# liefert 154 pdf Elemente, also genau 10Seiten * 15 PDFs + 1Seite * 4 PDFs
+# Test bestanden ;)
+"""
