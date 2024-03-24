@@ -1,8 +1,7 @@
 import requests
-from constants import cfsre_url, headers
+from constants import CFSRE_URL, HEADERS
 
 from bs4 import BeautifulSoup
-import re
 
 from os import remove
 from os.path import exists
@@ -19,7 +18,7 @@ Downloads a PDF from the Web
 def download_pdf(pdf_url):
     local_filename = pdf_url.split('/')[-1]
 
-    with requests.get(pdf_url, headers = headers) as request:
+    with requests.get(pdf_url, headers = HEADERS) as request:
         with open(local_filename, 'wb') as new_file:
             new_file.write(request.content)
     
@@ -32,7 +31,7 @@ All relevant pdf urls follow this RegEx: /images/monographs/ at the start, .pdf 
 
 """
 def create_list_urls():
-    page_to_scrape = requests.get(cfsre_url, headers = headers)
+    page_to_scrape = requests.get(CFSRE_URL, headers = HEADERS)
 
     soup = BeautifulSoup(page_to_scrape.text, features = "html.parser")
 

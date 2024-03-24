@@ -12,11 +12,11 @@ Which can easily be detected and blocked, therefore causing the error 403 Forbid
 By using the following User-Agent, we can bypass the bot-detection:
 
 """
-headers = {
+HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36',
 }
 # Note : If this User-Agent becomes invalid, we could use the library 'random_user_agent'
 
 
 # This is the url the webscraper takes data from
-cfsre_url = "https://www.cfsre.org/nps-discovery/monographs"
+CFSRE_URL = "https://www.cfsre.org/nps-discovery/monographs"
