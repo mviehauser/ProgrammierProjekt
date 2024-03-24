@@ -49,6 +49,11 @@ def create_list_urls():
     return links
 
 
+"""
+Deletes the locally stored file
+Args:
+- String name of the file
+"""
 def delete_file(filename):
     if exists(filename):
         remove(filename)
