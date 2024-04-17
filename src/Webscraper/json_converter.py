@@ -33,7 +33,7 @@ def save_table_as_json(table, json_file):
 
 
 # Example usage: "sample.pdf" file (sample file from url: https://www.cfsre.org/nps-discovery/monographs)
-pdf_path = 'sample.pdf'
+pdf_path = 'sample1.pdf'
 
 # Name of the created JSON-file
 json_filename = 'sample_table_data.json'
@@ -44,6 +44,7 @@ json_file_path = os.path.join(directory, json_filename)
 
 
 table = extract_table_from_pdf(pdf_path)
+print(table)
 save_table_as_json(table, json_file_path)
 print("Table data saved as JSON successfully.")
 
