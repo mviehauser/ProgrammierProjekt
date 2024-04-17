@@ -19,6 +19,7 @@ def run_webscraper():
         download_pdf(link)
         print(f"Downloaded: {link} [{i+1} of {num_links}]")
 
+
         local_pdf_filename = link.split('/')[-1]
         # Missing : Exctract information into .json file
 
