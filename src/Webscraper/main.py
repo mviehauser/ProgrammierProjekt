@@ -13,9 +13,11 @@ def run_webscraper():
         print(link)
     print("\n")
 
-    for link in links:
+    num_links = len(links)
+
+    for i, link in enumerate(links):
         download_pdf(link)
-        print("Downloaded: " + link)
+        print(f"Downloaded: {link} [{i+1} of {num_links}]")
 
         local_pdf_filename = link.split('/')[-1]
         # Missing : Exctract information into .json file
