@@ -1,72 +1,63 @@
-import json
+from json import dump
 import os
 import pdfplumber
 from constants import DATA
 from rdkit.Chem.inchi import InchiToInchiKey
+from re import compile, search, DOTALL
 
 """
-Extracts tables from a PDF file using pdfplumber library.
+There are 2 different types of pdfs:
+    Type 1 : https://www.cfsre.org/images/monographs/Medetomidine-New-Drug-Monograph-NPS-Discovery-112723.pdf
+    Type 2 : https://www.cfsre.org/images/monographs/BZO-POXIZID_101921_CFSRE_Chemistry_Report.pdf 
 
-Args:
-- pdf_path (str): Path to the PDF file.
-- page_number (int): Page number to extract the table from. Default is 0 (first page)
-
-Returns:
-- list of lists: The extracted table.
+Type 1 has all the important information on the first page.
+Type 2 has some information in the text and on page two, therefore regular expressions are needed.
 """
-def extract_table_from_pdf(pdf_path, page_number=0):
-
+def extract_data_from_pdf(pdf_path):
+    table = []
     with pdfplumber.open(pdf_path) as pdf:
-        page = pdf.pages[page_number]
+        page = pdf.pages[0]
         table = page.extract_table()
-    return table
-
-def extract_data_from_pdf(pdf_path, page_numbers = [0, 1]):
+    
     data = DATA.copy()
-    table = []
-
-    with pdfplumber.open(pdf_path) as pdf:
-        for page_number in page_numbers:
-            page = pdf.pages[page_number]
-            table += page.extract_table()
-
-    for key in data.keys():
+    
+    if table[0][0] == "Preferred Name":
+        # This is Type 1
         for column in table:
-            if key == column[0]:
-                data[key] = column[1]
-
-    if data["Preferred Name"] == "":
-        # Überschrift nehmen!
-        print("x")
-
-    if data["InChI Key"] == "":
-        data["InChI Key"] == InchiToInchiKey(table[1][1])
-
-
-    return data
-
-def extract_data_from_pdf2(pdf_path, page_numbers = [0, 1]):
-    data = {}
-    table = []
-
-    with pdfplumber.open(pdf_path) as pdf:
-        for page_number in page_numbers:
-            page = pdf.pages[page_number]
+            data[column[0]] = column[1]
+        return data
+    else:
+        # This is Type 2
+        with pdfplumber.open(pdf_path) as pdf:
+            page = pdf.pages[1]
             table += page.extract_table()
+        
+        data["Preferred Name"] = table[0][1]
 
-    for key in data.keys():
-        for column in table:
-            if key == column[0]:
-                data[key] = column[1]
+        data["Chemical Formula"] = table[2][1]
+        data["Molecular Weight"] = table[2][2]
+        data["Molecular Ion [M+]"] = table[2][3]
+        data["Exact Mass [M+H]+"] = table[2][4]
+        
+        with pdfplumber.open(pdf_path) as pdf:
+            page = pdf.pages[0]
+            text = page.extract_text()
 
-    if data["Preferred Name"] == "":
+        re_synonyms = compile(r'Synonyms:.*')
+        data["Synonyms"] = re_synonyms.search(text).group(0)[10:]
 
+        re_IUPAC_Name = compile(r'IUPAC.Name:.*')
+        data["Formal Name"] = re_IUPAC_Name.search(text).group(0)[12:]
 
-    if data["InChI Key"] == "":
-        data["InChI Key"] == InchiToInchiKey(table[1][1])
+        re_inchiString = compile(r'InChI.String:.*CFR', DOTALL)
+        inchi_String = re_inchiString.search(text).group(0).replace("\n", "")[14:-3]
+        data["InChI Key"] = InchiToInchiKey(inchi_String)
 
-
-    return data
+        re_casNumber = compile(r'CAS#.*')
+        data["CAS Number"] = re_casNumber.search(text).group(0)[5:]
+        
+        return data
+    
 """
 Saves table data as a JSON file.
 
@@ -77,22 +68,17 @@ Args:
 def save_table_as_json(table, json_file):
 
     with open(json_file, 'w') as f:
-        json.dump(table, f)
+        dump(table, f)
 
 
-# Example usage: "sample.pdf" file (sample file from url: https://www.cfsre.org/nps-discovery/monographs)
-pdf_path = 'C:\\Users\\Fokus\\Code Projekte VS\\ProgrammierProjekt\\src\\Webscraper\\sample.pdf'
+pdf_path = "sample2.pdf"
 
 # Name of the created JSON-file
 json_filename = 'sample_table_data.json'
 
 # Relative Path to JSON-files folder
-directory = os.path.join(os.path.dirname(__file__), '..', 'JSON-files')
-json_file_path = os.path.join(directory, json_filename)
+#directory = os.path.join(os.path.dirname(__file__), '..', 'JSON-files')
+#json_file_path = os.path.join(directory, json_filename)
 
 
 print(extract_data_from_pdf(pdf_path))
-
-
-
-
