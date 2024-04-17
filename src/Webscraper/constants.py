@@ -20,3 +20,15 @@ HEADERS = {
 
 # This is the url the webscraper takes data from
 CFSRE_URL = "https://www.cfsre.org/nps-discovery/monographs"
+
+DATA = {
+    "Preferred Name": "",
+    "Synonyms": "",
+    "Formal Name": "",
+    "InChI Key": "",
+    "CAS Number": "",
+    "Chemical Formula": "",
+    "Molecular Weight": "",
+    "Molecular Ion [M+]": "",
+    "Exact Mass [M+H]+": "",
+}
