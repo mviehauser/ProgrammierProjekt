@@ -35,11 +35,14 @@ def extract_data_from_pdf(pdf_path):
     table = extract_table_pdfPage(pdf_path, pdf_info)
     data = DATA.copy()
     
-    if len(table) == 9 and table[0][0] == "Preferred Name":
+    if len(table) == 9:
         # This is Type 1
-        for column in table:
-            data[column[0]] = column[1]
-        return data
+        if table[0][0] == "Preferred Name":
+            for column in table:
+                data[column[0]] = column[1]
+        else:
+            print("Error: Expected 'Preferred Name' in table[0][0]")
+            data = None
     else:
         # This is Type 2+
         # while-loop ensures there are at least two table-rows in 'table', which means "2.1 CHEMICAL DATA" is extracted
@@ -54,9 +57,12 @@ def extract_data_from_pdf(pdf_path):
             # if true, this means the heading(chemical prefered name) is stored in a table, NOT in the text
             data["Preferred Name"] = table[0][1]
             chemical_data_row = 2
-        if len(table) == 2:
+        elif len(table) == 2:
             # in this case, the heading is stored in the 4th line of text
-            data["Preferred Name"] = text.split('\n')[3]
+            if "NMS Labs" in text.split('\n')[0]:
+                data["Preferred Name"] = text.split('\n')[3]
+            else:
+                data["Preferred Name"] = text.split('\n')[0]
             chemical_data_row = 1
         else:
             raise ValueError(f"Unexpected table size in {pdf_path}")
@@ -80,7 +86,7 @@ def extract_data_from_pdf(pdf_path):
         re_casNumber = compile(r'CAS#.*')
         data["CAS Number"] = re_casNumber.search(text).group(0)[5:]
         
-        return data
+    return data
     
 """
 Saves table data as a JSON file.
@@ -94,15 +100,16 @@ def save_table_as_json(table, json_file):
     with open(json_file, 'w') as f:
         dump(table, f)
 
+#test
+if __name__ == "__main__":
+    pdf_path = "ADB-5-Br-PINACA-New-Drug-Monograph-NPS-Discovery-230501.pdf"
 
-pdf_path = "C:\\Users\\Fokus\\Code Projekte VS\\ProgrammierProjekt\\src\\Webscraper\\sample4.pdf"
+    # Name of the created JSON-file
+    #json_filename = 'sample_table_data.json'
 
-# Name of the created JSON-file
-json_filename = 'sample_table_data.json'
-
-# Relative Path to JSON-files folder
-#directory = os.path.join(os.path.dirname(__file__), '..', 'JSON-files')
-#json_file_path = os.path.join(directory, json_filename)
+    # Relative Path to JSON-files folder
+    #directory = os.path.join(os.path.dirname(__file__), '..', 'JSON-files')
+    #json_file_path = os.path.join(directory, json_filename)
 
 
-print(extract_data_from_pdf(pdf_path))
+    print(extract_data_from_pdf(pdf_path))
