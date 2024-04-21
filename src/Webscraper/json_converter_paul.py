@@ -65,7 +65,8 @@ def extract_data_from_pdf(pdf_path):
                 data["Preferred Name"] = text.split('\n')[0]
             chemical_data_row = 1
         else:
-            raise ValueError(f"Unexpected table size in {pdf_path}")
+            print(f"Error: Unexpected table size in {pdf_path}")
+            return None
 
         data["Chemical Formula"] = table[chemical_data_row][1]
         data["Molecular Weight"] = table[chemical_data_row][2]
