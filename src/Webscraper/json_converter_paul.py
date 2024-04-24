@@ -1,5 +1,4 @@
 from json import dump
-import os
 import pdfplumber
 from constants import DATA
 from rdkit.Chem.inchi import InchiToInchiKey
@@ -29,9 +28,7 @@ Type 1 has all the important information on the first page in a table and defini
 Type 2+ does not have every information in a table, therefore regular expressions and text extraction is needed.
 """
 def extract_data_from_pdf(pdf_path):
-    pdf_info = {
-        'pdfPage' : 0,
-    }
+    pdf_info = {'pdfPage' : 0}
     table = extract_table_pdfPage(pdf_path, pdf_info)
     data = DATA.copy()
     
