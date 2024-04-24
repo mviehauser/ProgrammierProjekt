@@ -64,20 +64,21 @@ def extract_data_from_pdf(pdf_path):
         data["Preferred Name"] = t[0]
     
     # These Data-keys are only to be found in the text by RegExps
-    re_synonyms = compile(r'Synonyms:.*')
-    data["Synonyms"] = re_synonyms.search(text).group(0)[10:]
+    # DOTALL used when information can be spread over multiple lines
+    re_synonyms = compile(r'(?<=Synonyms:.).*?(?=Source)', DOTALL)
+    data["Synonyms"] = re_synonyms.search(text).group(0).replace("\n", "").split(", ")
 
-    re_IUPAC_Name = compile(r'IUPAC.Name:.*')
-    data["Formal Name"] = re_IUPAC_Name.search(text).group(0)[12:]
+    re_IUPAC_Name = compile(r'(?<=IUPAC.Name:.).*?(?=InChI)', DOTALL)
+    data["Formal Name"] = re_IUPAC_Name.search(text).group(0).replace("\n", "")
 
-    re_inchiString = compile(r'InChI.String:.*CFR', DOTALL)
-    inchi_String = re_inchiString.search(text).group(0).replace("\n", "")[14:-3]
+    re_inchiString = compile(r'(?<=InChI.String:.).*?(?=CFR)', DOTALL)
+    inchi_String = re_inchiString.search(text).group(0).replace("\n", "")
     data["InChI Key"] = InchiToInchiKey(inchi_String)
 
-    re_casNumber = compile(r'CAS#.*')
-    data["CAS Number"] = re_casNumber.search(text).group(0)[5:]
+    re_casNumber = compile(r'(?<=CAS#.).*?(?=\n)')
+    data["CAS Number"] = re_casNumber.search(text).group(0)
 
-    # Other
+    # Other informations CAN be in table
     if len(table) in [2, 3]:
         data["Chemical Formula"] = table[-1][1]
         data["Molecular Weight"] = table[-1][2]
@@ -93,15 +94,14 @@ def extract_data_from_pdf(pdf_path):
         data["Exact Mass [M+H]+"] = table[-1][-1]
     
     elif len(table) == 10 or len(table) == 6:
+        # "2.1 CHEMICAL DATA" is not stored as a table, but the informations can be found in the text
         # there are more informations stored in a table, eventhough they are not visible
         # unfortunatly, these informations are not usable
         # example: https://www.cfsre.org/images/monographs/ADB-5Br-BINACA-055622-CFSRE-Chemistry-Report.pdf
         # table extraction delivers: [['', 'ADB-5’Br-BINACA', ''], ['ADB-BINACA', 'ADB-5’Br-BINACA', '5F-ADB-PINACA'], ['', '', ''], [None, '', None], [None, '', None], ['N-(1-Amino-3,3-Dimethyl-1-oxoButan-2-\nyl)-1-Butyl-INdAzole-3-CarboxAmide', 'N-(1-Amino-3,3-Dimethyl-1-oxoButan-2-', 'N-(1-Amino-3,3-Dimethyl-1-oxoButan-2-\nyl)-1-5-FluoroPentyl-INdAzole-3-\nCarboxAmide'], [None, 'yl)-1-Butyl-5-Bromo-INdAzole-3-', None], [None, 'CarboxAmide', None], ['Name: ADB-BINACA', 'Name: ADB-5’Br-BINACA', 'Name: 5F-ADB-PINACA'], ['Synonyms: ADB-BUTINACA', 'Synonyms: ADB-5’Br-BUTINACA', 'Synonyms: N/A']]
-        # on top, "2.1 CHEMICAL DATA" is not stored as a table, but the informations can be found in the text
         with pdfplumber.open(pdf_path) as pdf:
             page = pdf.pages[1]
             text += page.extract_text()
-        data["Preferred Name"] = text.split('\n')[0]
 
         re_chemical_data = compile(r'(?<=Base ).*?(?=3\. )', DOTALL)
         chemical_data_infos = re_chemical_data.search(text).group(0).split('\n')
@@ -149,7 +149,7 @@ def save_table_as_json(table, json_file):
 
 #test
 if __name__ == "__main__":
-    pdf_path = "src\Webscraper\pdf samples\\5F-AB-PFUPPYCA_100518_CFSRE_Report.pdf"
+    pdf_path = "src\\Webscraper\\pdf samples\\BZO-CHMOXIZID_111821_CFSRE_Chemistry_Report.pdf"
 
     # Name of the created JSON-file
     #json_filename = 'sample_table_data.json'
