@@ -19,6 +19,23 @@ def extract_table_pdfPage(pdf_path, pdf_info):
         else:
             return []
 """
+# example: from 'C H N O\n20 19 3 2' to 'C20H19N3O2'
+"""
+def prettify_formula(data):
+    a = data["Chemical Formula"].split("\n")
+    letters = a[0].split(" ")
+    numbers = a[1].split(" ")
+    
+    formula = ""
+    for i in range(len(numbers)):
+        formula += letters[i] + numbers[i]
+    
+    if len(letters) == len(numbers)+1:
+        formula += letters[-1]
+    
+    data["Chemical Formula"] = formula
+
+"""
 There are at least 3 different types of pdfs, with different internal structure:
     Type 1 "NPS Discovery (new)" : https://www.cfsre.org/images/monographs/Medetomidine-New-Drug-Monograph-NPS-Discovery-112723.pdf
     Type 2 "NPS Discovery (old)" : https://www.cfsre.org/images/monographs/BZO-POXIZID_101921_CFSRE_Chemistry_Report.pdf 
@@ -107,19 +124,12 @@ def extract_data_from_pdf(pdf_path):
         chemical_data_infos = re_chemical_data.search(text).group(0).split('\n')
 
         # Building formula from chemical_data_infos
-        formula_numbers = chemical_data_infos[1].split(" ")
+        formula_numbers = chemical_data_infos[1]
 
         re_formula_letters = compile(r'^[A-Za-z\s]+(?=\d)')
-        formula_letters = re_formula_letters.search(chemical_data_infos[0]).group(0).strip().split(" ")
+        formula_letters = re_formula_letters.search(chemical_data_infos[0]).group(0).strip()
             
-        formula = ""
-
-        for i in range(len(formula_numbers)):
-            formula += formula_letters[i]
-            formula += formula_numbers[i]
-        if(len(formula_letters) == len(formula_numbers)+1):
-            formula += formula_letters[-1]
-
+        formula = formula_letters + '\n' + formula_numbers
         data["Chemical Formula"] = formula
 
         # Extracting "molecular weight", "molecular ion[m+]" and "exact mass[m+h]+"
@@ -132,7 +142,9 @@ def extract_data_from_pdf(pdf_path):
     else:
         print("Error: Cannnot extract pdf because of unknown length of 'table'")
         return None
-  
+    
+    prettify_formula(data)
+
     return data
     
 """
@@ -149,7 +161,7 @@ def save_table_as_json(table, json_file):
 
 #test
 if __name__ == "__main__":
-    pdf_path = "src\\Webscraper\\pdf samples\\BZO-CHMOXIZID_111821_CFSRE_Chemistry_Report.pdf"
+    pdf_path = "src\\Webscraper\\pdf samples\\BZO-4en-POXIZID-051922-CFSRE-Chemistry-Report.pdf"
 
     # Name of the created JSON-file
     #json_filename = 'sample_table_data.json'
@@ -157,6 +169,5 @@ if __name__ == "__main__":
     # Relative Path to JSON-files folder
     #directory = os.path.join(os.path.dirname(__file__), '..', 'JSON-files')
     #json_file_path = os.path.join(directory, json_filename)
-
 
     print(extract_data_from_pdf(pdf_path))
