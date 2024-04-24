@@ -18,22 +18,6 @@ def extract_table_pdfPage(pdf_path, pdf_info):
             return x
         else:
             return []
-"""
-# example: from 'C H N O\n20 19 3 2' to 'C20H19N3O2'
-"""
-def prettify_formula(data):
-    a = data["Chemical Formula"].split("\n")
-    letters = a[0].split(" ")
-    numbers = a[1].split(" ")
-    
-    formula = ""
-    for i in range(len(numbers)):
-        formula += letters[i] + numbers[i]
-    
-    if len(letters) == len(numbers)+1:
-        formula += letters[-1]
-    
-    data["Chemical Formula"] = formula
 
 """
 There are at least 3 different types of pdfs, with different internal structure:
@@ -52,8 +36,15 @@ def extract_data_from_pdf(pdf_path):
     if len(table) == 9:
         # This is Type 1
         if table[0][0] == "Preferred Name":
-            for column in table:
-                data[column[0]] = column[1]
+            data["Preferred Name"] = table[0][1]
+            data["Synonyms"] = table[1][1]
+            data["Formal Name"] = table[2][1]
+            data["InChI Key"] = table[3][1]
+            data["CAS Number"] = table[4][1]
+            data["Chemical Formula"] = table[5][1]
+            data["Molecular Weight"] = table[6][1]
+            data["Molecular Ion [M+]"] = table[7][1]
+            data["Exact Mass [M+H]+"] = table[8][1]
         else:
             print("Error: Expected 'Preferred Name' in table[0][0]")
             data = None
@@ -82,8 +73,8 @@ def extract_data_from_pdf(pdf_path):
     
     # These Data-keys are only to be found in the text by RegExps
     # DOTALL used when information can be spread over multiple lines
-    re_synonyms = compile(r'(?<=Synonyms:.).*?(?=Source)', DOTALL)
-    data["Synonyms"] = re_synonyms.search(text).group(0).replace("\n", "").split(", ")
+    re_synonyms = compile(r'(?<=Synonyms:.).*?(?=Source|Important)', DOTALL)
+    data["Synonyms"] = re_synonyms.search(text).group(0).replace("\n", "")
 
     re_IUPAC_Name = compile(r'(?<=IUPAC.Name:.).*?(?=InChI)', DOTALL)
     data["Formal Name"] = re_IUPAC_Name.search(text).group(0).replace("\n", "")
@@ -142,11 +133,33 @@ def extract_data_from_pdf(pdf_path):
     else:
         print("Error: Cannnot extract pdf because of unknown length of 'table'")
         return None
-    
-    prettify_formula(data)
 
     return data
+
+"""
+Turns String of Synonyms into list of synonyms
+"""
+def format_synonyms(data):
+    synonyms = data["Synonyms"].split(", ")
+    synonyms = [s for s in synonyms if s not in ['Not Available', 'Not Applicable', 'None Available']]
+    data["Synonyms"] = synonyms
+"""
+# example: from 'C H N O\n20 19 3 2' to 'C20H19N3O2'
+"""
+def prettify_formula(data):
+    tmp = data["Chemical Formula"].split("\n")
+    letters = tmp[0].split(" ")
+    numbers = tmp[1].split(" ")
     
+    formula = ""
+    for i in range(len(numbers)):
+        formula += letters[i] + numbers[i]
+    
+    if len(letters) == len(numbers)+1:
+        formula += letters[-1]
+    
+    data["Chemical Formula"] = formula
+
 """
 Saves table data as a JSON file.
 
@@ -161,7 +174,7 @@ def save_table_as_json(table, json_file):
 
 #test
 if __name__ == "__main__":
-    pdf_path = "src\\Webscraper\\pdf samples\\BZO-4en-POXIZID-051922-CFSRE-Chemistry-Report.pdf"
+    pdf_path = "src\\Webscraper\\pdf samples\\sample1.pdf"
 
     # Name of the created JSON-file
     #json_filename = 'sample_table_data.json'

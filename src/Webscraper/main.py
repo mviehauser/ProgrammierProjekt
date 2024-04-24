@@ -19,8 +19,12 @@ def run_webscraper():
 
 
         local_pdf_filename = link.split('/')[-1]
-        # Missing : Exctract information into .json file
-        print(extract_data_from_pdf(local_pdf_filename))
+        # Missing : Extract information into .json file
+        d = extract_data_from_pdf(local_pdf_filename)
+        if d:
+            prettify_formula(d)
+            format_synonyms(d)
+            print(d)
 
         delete_file(local_pdf_filename)
         print("Deleted: " + local_pdf_filename + "\n")
