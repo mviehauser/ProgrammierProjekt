@@ -22,13 +22,17 @@ HEADERS = {
 CFSRE_URL = "https://www.cfsre.org/nps-discovery/monographs"
 
 DATA = {
-    "Preferred Name": "",
-    "Synonyms": "",
-    "Formal Name": "",
-    "InChI Key": "",
-    "CAS Number": "",
-    "Chemical Formula": "",
-    "Molecular Weight": "",
-    "Molecular Ion [M+]": "",
-    "Exact Mass [M+H]+": "",
+    "names" : [],
+    "iupac_name": "",
+    "classes" : [],
+    "inchi" : "",
+    "inchi_key": "",
+    "smiles" : "",
+    "cas_num": "",
+    "formula": "",
+    "molecular_mass": "",
+    "molecular_ion_[m+]": "",
+    "exact_mass_[m+h]+": "",
+    "source_name" : "cfsre",
+    "source_url" : "",
 }
