@@ -34,12 +34,16 @@ def extract_data_from_pdf(pdf_path):
     pdf_info = {'pdfPage' : 0}
     table = extract_table_pdfPage(pdf_path, pdf_info)
     data = DATA.copy()
+
+    with pdfplumber.open(pdf_path) as pdf:
+        page = pdf.pages[0]
+        text = page.extract_text()
     
     if len(table) == 9:
         # This is Type 1
         if table[0][0] == "Preferred Name":
-            data["names"].append(table[0][1])
-            data["names"].extend(table[1][1].split(", "))
+            data["names"] = [table[0][1]]
+            data["names"] += table[1][1].split(", ")
             data["iupac_name"] = table[2][1]
             data["inchi_key"] = table[3][1]
             data["cas_num"] = table[4][1]
@@ -47,6 +51,9 @@ def extract_data_from_pdf(pdf_path):
             data["molecular_mass"] = table[6][1]
             data["molecular_ion_[m+]"] = table[7][1]
             data["exact_mass_[m+h]+"] = table[8][1]
+            # Classes:
+            re_class = compile(r'(?<=NPS SUBCLASS\n).*?(?=\n)')
+            data["classes"] = [re_class.search(text).group(0)]
         else:
             print("Error: Expected 'Preferred Name' in table[0][0]")
             data = None
@@ -58,25 +65,25 @@ def extract_data_from_pdf(pdf_path):
         table += extract_table_pdfPage(pdf_path, pdf_info)
         
     with pdfplumber.open(pdf_path) as pdf:
-        page = pdf.pages[0]
-        text = page.extract_text()
-    
+            page = pdf.pages[1]
+            text += page.extract_text()
+
     # Preferred Name in text
     t = text.split('\n')
     if "NMS Labs" in t[0]:
         if '&' in t[3] or 'and' in t[3]:
             print("Error: Two chemicals in one pdf")
             return None
-        data["names"].append(t[3])
+        data["names"] = [t[3]]
     elif "The Center for Forensic Science Research and Education" in t[0]:
-        data["names"].append(t[4])
+        data["names"] = [t[4]]
     else:
-        data["names"].append(t[0])
+        data["names"] = [t[0]]
     
     # These Data-keys are only to be found in the text by RegExps
     # DOTALL used when information can be spread over multiple lines
     re_synonyms = compile(r'(?<=Synonyms:.).*?(?=Source|Important)', DOTALL)
-    data["names"].extend(re_synonyms.search(text).group(0).replace("\n", "").split(", "))
+    data["names"] += re_synonyms.search(text).group(0).replace("\n", "").split(", ")
 
     re_IUPAC_Name = compile(r'(?<=IUPAC.Name:.).*?(?=InChI)', DOTALL)
     data["iupac_name"] = re_IUPAC_Name.search(text).group(0).replace("\n", "")
@@ -87,6 +94,14 @@ def extract_data_from_pdf(pdf_path):
 
     re_casNumber = compile(r'(?<=CAS#.).*?(?=\n)')
     data["cas_num"] = re_casNumber.search(text).group(0)
+
+    re_class = compile(r'(?<=classified as a )(?:novel |synthetic (?:\(or novel\) )?|substituted |suspected |)?.*?(?: analogue| precursor)?(?= |\.|\,|\;)')
+    if x:=re_class.search(text):
+        data["classes"] = [x.group(0).title()]
+    elif "is classified as an analogue of the fentanyl precursor" in text:
+        data["classes"] = ["Fentanyl Precursor"]
+    elif "is a synthetic hallucinogen and analogue of LSD" in text:
+        data["classes"] = ["Hallucinogen", "LSD Analoge"]
 
     # Other informations CAN be in table
     if len(table) in [2, 3]:
@@ -109,9 +124,6 @@ def extract_data_from_pdf(pdf_path):
         # unfortunatly, these informations are not usable
         # example: https://www.cfsre.org/images/monographs/ADB-5Br-BINACA-055622-CFSRE-Chemistry-Report.pdf
         # table extraction delivers: [['', 'ADB-5’Br-BINACA', ''], ['ADB-BINACA', 'ADB-5’Br-BINACA', '5F-ADB-PINACA'], ['', '', ''], [None, '', None], [None, '', None], ['N-(1-Amino-3,3-Dimethyl-1-oxoButan-2-\nyl)-1-Butyl-INdAzole-3-CarboxAmide', 'N-(1-Amino-3,3-Dimethyl-1-oxoButan-2-', 'N-(1-Amino-3,3-Dimethyl-1-oxoButan-2-\nyl)-1-5-FluoroPentyl-INdAzole-3-\nCarboxAmide'], [None, 'yl)-1-Butyl-5-Bromo-INdAzole-3-', None], [None, 'CarboxAmide', None], ['Name: ADB-BINACA', 'Name: ADB-5’Br-BINACA', 'Name: 5F-ADB-PINACA'], ['Synonyms: ADB-BUTINACA', 'Synonyms: ADB-5’Br-BUTINACA', 'Synonyms: N/A']]
-        with pdfplumber.open(pdf_path) as pdf:
-            page = pdf.pages[1]
-            text += page.extract_text()
 
         re_chemical_data = compile(r'(?<=Base ).*?(?=3\. )', DOTALL)
         chemical_data_infos = re_chemical_data.search(text).group(0).split('\n')
@@ -140,7 +152,7 @@ def extract_data_from_pdf(pdf_path):
 
 def format_names(data):
     for x in ['Not Available', 'None Available', 'Not Applicable']:
-        if x in data["names"]:
+        if x in data["names"][1:]:
             data["names"].remove(x)
 """
 # example: from 'C H N O\n20 19 3 2' to 'C20H19N3O2'
@@ -180,7 +192,7 @@ def save_table_as_json(table, json_file):
 
 #test
 if __name__ == "__main__":
-    pdf_path = "src\\Webscraper\\pdf samples\\sample4.pdf"
+    pdf_path = "src\\Webscraper\\pdf samples\\NN-Diethyl_Hexedrone_031819_NMSLabs_Report.pdf"
 
     # Name of the created JSON-file
     #json_filename = 'sample_table_data.json'
