@@ -22,7 +22,7 @@ def run_webscraper():
         # Missing : Extract information into .json file
         d = extract_data_from_pdf(local_pdf_filename)
         if d:
-            prettify_formula(d)
+            format_formula(d)
             format_synonyms(d)
             print(d)
 

@@ -146,7 +146,7 @@ def format_synonyms(data):
 """
 # example: from 'C H N O\n20 19 3 2' to 'C20H19N3O2'
 """
-def prettify_formula(data):
+def format_formula(data):
     tmp = data["Chemical Formula"].split("\n")
     letters = tmp[0].split(" ")
     numbers = tmp[1].split(" ")
