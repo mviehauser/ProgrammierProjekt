@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" type="x-icon" href="./images/icons/lupe2.png">
+    <title>Drug Search Engine</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div></div>
+    <div id="selectText">Select a property you want to filter by:</div>
+    <div id="radioButtonContainer">
+    <div>
+      <input type="radio" id="smiles" name="drone" value="smiles" checked />
+      <label for="smiles">smiles</label>
+    </div>
+  
+    <div>
+      <input type="radio" id="names" name="names" value="names" />
+      <label for="names">names</label>
+    </div>
+  
+    <div>
+      <input type="radio" id="iupac_name" name="drone" value="iupac_name" />
+      <label for="iupac_name">iupac_name</label>
+    </div>
+    <div>
+      <input type="radio" id="formular" name="drone" value="formular" />
+      <label for="formular">formular</label>
+    </div>
+    <div>
+      <input type="radio" id="inchi" name="drone" value="inchi" />
+      <label for="inchi">inchi</label>
+    </div>
+    <div>
+      <input type="radio" id="inchi_key" name="drone" value="inchi_key" />
+      <label for="inchi_key">inchi_key</label>
+    </div>
+    <div>
+      <input type="radio" id="molecular_mass" name="drone" value="molecular_mass" />
+      <label for="molecular_mass">molecular_mass</label>
+    </div>
+    <div>
+      <input type="radio" id="cas_num" name="drone" value="cas_num" />
+      <label for="cas_num">cas_num</label>
+    </div>
+    <div>
+      <input type="radio" id="category" name="drone" value="category" />
+      <label for="category">category</label>
+    </div>
+    <div>
+      <input type="radio" id="last_changed_at" name="drone" value="last_changed_at" />
+      <label for="last_changed_at">last_changed_at</label>
+    </div>
+  </div>
+
+    <button id="loadButton" onclick="loadDrugs()">Load Drugs</button>
+    <div id="table_container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Preferred Name</th>
+            <th>Synonyms</th>
+            <th>Formal Name</th>
+            <th>InChI Key</th>
+            <th>CAS Number</th>
+            <th>Chemical Formula</th>
+            <th>Molecular Weight</th>
+            <th>Molecular Ion [M+]</th>
+            <th>Exact Mass [M+H]+</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <script src="data.js"></script>
+    <script>
+      function loadDrugs() {
+
+        data = filterData();
+
+        getTD(data);
+      }
+      function filterData() {
+        const searchTerm = "368.43";
+        const searchProperty = "molecularWeight";
+
+        function searchJSON(json, searchTerm) {
+          const results = [];
+          json.forEach((entry) => {
+            if (
+              entry[searchProperty]
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase())
+            ) {
+              results.push(entry);
+            }
+          });
+          return results;
+        }
+
+        return searchJSON(Data, searchTerm);
+      }
+
+      var getTD = function (data) {
+        const body = document.querySelector("tbody");
+        let tags = "";
+        data.forEach((entry) => {
+          tags += `<tr>
+            <td>${entry.preferredName}</td>
+            <td>${entry.synonyms}</td>
+            <td>${entry.formalName}</td>
+            <td>${entry.inchiKey}</td>
+            <td>${entry.casNumber}</td>
+            <td>${entry.chemicalFormula}</td>
+            <td>${entry.molecularWeight}</td>
+            <td>${entry.molecularIon}</td>
+            <td>${entry.exactMass}</td>
+            </tr>`;
+        });
+        body.innerHTML = tags;
+      };
+    </script>
+  </body>
+</html>

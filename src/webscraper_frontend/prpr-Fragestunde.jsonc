@@ -1,0 +1,21 @@
+{
+    "smiles": "",           // Der kanonische smiles string. Wird als eindeutige id verwendet
+    "names": [""],
+    "iupac_name": "",
+    "formular": "",         // zur validierung verwendet
+    "inchi": "",
+    "inchi_key": "",
+    "molecular_mass": 0.0,  // zur validierung verwendet
+    "cas_num": "",          // Die CAS-Nummer
+    "category": [""],       // Alle Klassen von Oberste zur Untersten sortiert
+    "source_name": "",      // Name der Seite woher die Infos kommen
+    "source_url": "",       // direkte url auf die unterseite oder pdf
+    "valid": false,         // ob substanz erfolgreich validiert wurde
+        // erfolgreich: true, fehlerhaft: false, noch nicht validiert: null
+    "deleted": false,       // ob subtanz gelöscht wurde
+    "last_changed_at": "",  // todo einheitliches format - Zeitstempel wann die Daten zuletzt geändert wurden
+    "version": 0.0,         // vielleicht software version
+    "details": {
+        // Hier alles hin was ihr teamspezifisch braucht
+    }
+}
