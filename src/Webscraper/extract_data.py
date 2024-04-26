@@ -110,9 +110,8 @@ def extract_data_from_pdf(pdf_path):
         data["exact_mass_[m+h]+"] = table[-1][-1]
     
     elif len(table) == 10 or len(table) == 6:
-        # "2.1 CHEMICAL DATA" is not stored as a table, but the informations can be found in the text
-        # there are more informations stored in a table, eventhough they are not visible
-        # unfortunatly, these informations are not usable
+        # "CHEMICAL DATA" is not stored as a table, but the informations can be found in the text
+        # there are more elements stored in a table, eventhough they are not visible in the pdf. Unfortunatly, these elements are not useful.
         # example: https://www.cfsre.org/images/monographs/ADB-5Br-BINACA-055622-CFSRE-Chemistry-Report.pdf
         # table extraction delivers: [['', 'ADB-5’Br-BINACA', ''], ['ADB-BINACA', 'ADB-5’Br-BINACA', '5F-ADB-PINACA'], ['', '', ''], [None, '', None], [None, '', None], ['N-(1-Amino-3,3-Dimethyl-1-oxoButan-2-\nyl)-1-Butyl-INdAzole-3-CarboxAmide', 'N-(1-Amino-3,3-Dimethyl-1-oxoButan-2-', 'N-(1-Amino-3,3-Dimethyl-1-oxoButan-2-\nyl)-1-5-FluoroPentyl-INdAzole-3-\nCarboxAmide'], [None, 'yl)-1-Butyl-5-Bromo-INdAzole-3-', None], [None, 'CarboxAmide', None], ['Name: ADB-BINACA', 'Name: ADB-5’Br-BINACA', 'Name: 5F-ADB-PINACA'], ['Synonyms: ADB-BUTINACA', 'Synonyms: ADB-5’Br-BUTINACA', 'Synonyms: N/A']]
 
