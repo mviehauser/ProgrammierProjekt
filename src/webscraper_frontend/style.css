@@ -1,0 +1,40 @@
+body{
+    height: 100%;
+    background-image: url('./images/wallpapers/1351188.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+}
+#selectText{
+    color: white;
+}
+table {
+    border-collapse: collapse;
+    width: 80%;
+}
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+th {
+    background-color: #f2f2f2;
+}
+td{
+    color: white;
+}
+#loadButton{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 100px;
+    height: 50px;
+}
+#table_container{
+    display: flex;
+    justify-content: center;
+}
+#radioButtonContainer{
+    color: white;
+    display: flex;
+    justify-content: center;
+}
