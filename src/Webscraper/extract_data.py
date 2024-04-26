@@ -1,4 +1,3 @@
-from json import dump
 import pdfplumber
 from constants import DATA
 from rdkit.Chem.inchi import InchiToInchiKey
@@ -10,13 +9,17 @@ from re import compile, search, DOTALL
 Args:
 - pdf-Path
 - (int) page_to_extract
+
+Returns: (table, text) from Page-Number: #page_to_extract, with the help of pdfplumber
+
+Note: table can be of type None, therefore the else-statement
 """
 def extract_table_text_pdfPage(pdf_path, page_to_extract):
     with pdfplumber.open(pdf_path) as pdf:
         page = pdf.pages[page_to_extract]
         text = page.extract_text()
-        if x := page.extract_table():
-            return x, text
+        if table := page.extract_table():
+            return table, text
         else:
             return [], text
 
@@ -26,7 +29,7 @@ There are at least 3 different types of pdfs, with different internal structure:
     Type 2 "NPS Discovery (old)" : https://www.cfsre.org/images/monographs/BZO-POXIZID_101921_CFSRE_Chemistry_Report.pdf 
     Type 3 "NMS LABS" : https://www.cfsre.org/images/monographs/25E-NBOH_022718_NMSLabs_Report.pdf
 
-Type 1 has all the important information on the first page in a table and definies which infos have to be in DATA
+Type 1 has all the important information on the first page
 Type 2+ does not have every information in a table, therefore regular expressions and text extraction is needed.
 """
 def extract_data_from_pdf(pdf_path):
@@ -163,6 +166,10 @@ def format_formula(data):
     
     data["formula"] = formula
 
+"""
+Generates SMILES from data["inchi"] and saves it in data["smiles"]
+Cannot be generated from data["inchi_key"], since "inchi_key" is a hashed InChI(-String/-Code)
+"""
 def add_smiles(data):
     if i:=data["inchi"]:
         mol = MolFromInchi(i)
@@ -170,28 +177,10 @@ def add_smiles(data):
             return "Invalid InChIKey"
         smiles = MolToSmiles(mol, canonical = True)
         data["smiles"] = smiles
-"""
-Saves table data as a JSON file.
 
-Args:
-- table (list of lists): The table data to save.
-- json_file (str): Path to the JSON file.
-"""
-def save_table_as_json(table, json_file):
-
-    with open(json_file, 'w') as f:
-        dump(table, f)
-
-#test
+# Testing:
 if __name__ == "__main__":
     pdf_path = "src\\Webscraper\\pdf samples\\FluoroFuranylfentanyl_012319_ToxicologyAnalyticalReport.pdf"
-
-    # Name of the created JSON-file
-    #json_filename = 'sample_table_data.json'
-
-    # Relative Path to JSON-files folder
-    #directory = os.path.join(os.path.dirname(__file__), '..', 'JSON-files')
-    #json_file_path = os.path.join(directory, json_filename)
 
     data = extract_data_from_pdf(pdf_path)
     add_smiles(data)

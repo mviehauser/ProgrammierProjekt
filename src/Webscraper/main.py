@@ -1,5 +1,5 @@
 from pdf_downloader import *
-from json_converter_paul import *
+from Webscraper.extract_data import *
 from constants import *
 
 # imports functions from own modules
