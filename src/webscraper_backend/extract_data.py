@@ -1,9 +1,10 @@
 import pdfplumber
+from re import compile, search, DOTALL
 from constants import DATA
+
 from rdkit.Chem.inchi import InchiToInchiKey
 from rdkit.Chem import  MolFromInchi
 from rdkit.Chem.rdmolfiles import MolToSmiles
-from re import compile, search, DOTALL
 
 """
 Args:
@@ -180,7 +181,7 @@ def add_smiles(data):
 
 # Testing:
 if __name__ == "__main__":
-    pdf_path = "src\\Webscraper\\pdf samples\\FluoroFuranylfentanyl_012319_ToxicologyAnalyticalReport.pdf"
+    pdf_path = "src\\webscraper_backend\\pdf samples\\FluoroFuranylfentanyl_012319_ToxicologyAnalyticalReport.pdf"
 
     data = extract_data_from_pdf(pdf_path)
     add_smiles(data)
