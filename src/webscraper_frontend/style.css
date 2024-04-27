@@ -5,12 +5,16 @@ body{
     background-size: cover;
     background-position: top;
 }
+#welcomeText{
+    color: white;
+    margin-bottom: 30px;
+}
 #selectText{
     color: white;
 }
 table {
     border-collapse: collapse;
-    width: 80%;
+    width: 100%;
 }
 th, td {
     border: 1px solid #dddddd;

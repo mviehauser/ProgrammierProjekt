@@ -2,72 +2,73 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="shortcut icon" type="x-icon" href="./images/icons/lupe2.png">
+    <link rel="shortcut icon" type="x-icon" href="./images/icons/lupe2.png" />
     <title>Drug Search Engine</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div></div>
+    <div id="welcomeText">
+      Welcome to the Drug Search Engine by Paul Potsch and Maximilian Viehauser.
+      This search engine is based on the website of
+      <a href="https://www.cfsre.org/nps-discovery/monographs"
+        >The Centre for Forensic Science Research & Education</a
+      >
+    </div>
+
+
     <div id="selectText">Select a property you want to filter by:</div>
+    
     <div id="radioButtonContainer">
-    <div>
-      <input type="radio" id="smiles" name="drone" value="smiles" checked />
-      <label for="smiles">smiles</label>
+      <div class="radioButtonContainerElement"><div>
+        <input type="radio" id="names" name="names" value="names" />
+        <label for="names">Names</label>
+      </div>
+      <div>
+        <input type="radio" id="iupac_name" name="drone" value="iupac_name" />
+        <label for="iupac_name">IUPAC Name</label>
+      </div>
+      <div>
+        <input type="radio" id="classes" name="drone" value="classes" />
+        <label for="classes">Classes</label>
+      </div>
+      <div>
+        <input type="radio" id="inchi_key" name="drone" value="inchi_key" />
+        <label for="inchi_key">InChI Key</label>
+      </div>
     </div>
-  
-    <div>
-      <input type="radio" id="names" name="names" value="names" />
-      <label for="names">names</label>
+      <div class="radioButtonContainerElement">
+        <div>
+          <input type="radio" id="smiles" name="drone" value="smiles" checked />
+          <label for="smiles">Smiles</label>
+        </div>
+        <div>
+          <input type="radio" id="cas_num" name="drone" value="cas_num" />
+          <label for="cas_num">CAS Number</label>
+        </div>
+        <div>
+          <input type="radio" id="formula" name="drone" value="formula" />
+          <label for="formula">Formula</label>
+        </div>
+        <div>
+          <input type="radio" id="molecular_mass" name="drone" value="molecular_mass" />
+          <label for="molecular_mass">Molecular Mass</label>
+        </div>
+      </div>
     </div>
-  
-    <div>
-      <input type="radio" id="iupac_name" name="drone" value="iupac_name" />
-      <label for="iupac_name">iupac_name</label>
-    </div>
-    <div>
-      <input type="radio" id="formular" name="drone" value="formular" />
-      <label for="formular">formular</label>
-    </div>
-    <div>
-      <input type="radio" id="inchi" name="drone" value="inchi" />
-      <label for="inchi">inchi</label>
-    </div>
-    <div>
-      <input type="radio" id="inchi_key" name="drone" value="inchi_key" />
-      <label for="inchi_key">inchi_key</label>
-    </div>
-    <div>
-      <input type="radio" id="molecular_mass" name="drone" value="molecular_mass" />
-      <label for="molecular_mass">molecular_mass</label>
-    </div>
-    <div>
-      <input type="radio" id="cas_num" name="drone" value="cas_num" />
-      <label for="cas_num">cas_num</label>
-    </div>
-    <div>
-      <input type="radio" id="category" name="drone" value="category" />
-      <label for="category">category</label>
-    </div>
-    <div>
-      <input type="radio" id="last_changed_at" name="drone" value="last_changed_at" />
-      <label for="last_changed_at">last_changed_at</label>
-    </div>
-  </div>
 
     <button id="loadButton" onclick="loadDrugs()">Load Drugs</button>
     <div id="table_container">
       <table class="table">
         <thead>
           <tr>
-            <th>Preferred Name</th>
-            <th>Synonyms</th>
-            <th>Formal Name</th>
+            <th>Names</th>
+            <th>IUPAC Name</th>
+            <th>Classes</th>
             <th>InChI Key</th>
+            <th>Smiles</th>
             <th>CAS Number</th>
-            <th>Chemical Formula</th>
-            <th>Molecular Weight</th>
-            <th>Molecular Ion [M+]</th>
-            <th>Exact Mass [M+H]+</th>
+            <th>Formula</th>
+            <th>Molecular Mass</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -78,12 +79,24 @@
       function loadDrugs() {
 
         data = filterData();
-
+        modifiedData = removeEntries(data);
         getTD(data);
       }
+      function removeEntries(data){
+        const modifiedData = data.map(entry => {
+        const modifiedEntry = { ...entry };
+        delete modifiedEntry["molecular_ion_[m+]"];
+        delete modifiedEntry["exact_mass_[m+h]+"];
+        delete modifiedEntry["source_name"];
+        delete modifiedEntry["source_url"];
+        delete modifiedEntry["inchi"];
+        return modifiedEntry;
+    });
+    return modifiedData;
+      }
       function filterData() {
-        const searchTerm = "368.43";
-        const searchProperty = "molecularWeight";
+        const searchTerm = "Test";
+        const searchProperty = "smiles";
 
         function searchJSON(json, searchTerm) {
           const results = [];
@@ -107,15 +120,14 @@
         let tags = "";
         data.forEach((entry) => {
           tags += `<tr>
-            <td>${entry.preferredName}</td>
-            <td>${entry.synonyms}</td>
-            <td>${entry.formalName}</td>
-            <td>${entry.inchiKey}</td>
-            <td>${entry.casNumber}</td>
-            <td>${entry.chemicalFormula}</td>
-            <td>${entry.molecularWeight}</td>
-            <td>${entry.molecularIon}</td>
-            <td>${entry.exactMass}</td>
+            <td>${entry.names}</td>
+            <td>${entry.iupac_name}</td>
+            <td>${entry.classes}</td>
+            <td>${entry.inchi_key}</td>
+            <td>${entry.smiles}</td>
+            <td>${entry.cas_num}</td>
+            <td>${entry.formula}</td>
+            <td>${entry.molecular_mass}</td>
             </tr>`;
         });
         body.innerHTML = tags;
@@ -123,3 +135,4 @@
     </script>
   </body>
 </html>
+
