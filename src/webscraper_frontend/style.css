@@ -1,4 +1,9 @@
+@font-face {
+    font-family: myRoboto;
+    src: url(fonts/static/RobotoCondensed-ExtraLight.ttf);
+}
 body{
+    font-family: myRoboto;
     height: 100%;
     background-image: url('images/wallpapers/1351188.png');
     background-repeat: no-repeat;
@@ -20,7 +25,7 @@ body{
 #selectText{
     color: white;
     width: 70%;
-    margin-top: 5%;
+    margin-top: 3%;
     margin-left: 15%;
     margin-right: 15%;
     text-align: center;
@@ -36,7 +41,7 @@ body{
     justify-content: space-between;
     margin-top: 2%;
     font-size: larger;
-    margin-bottom: 5%;
+    margin-bottom: 3%;
 }
 #names{
     margin-bottom: 10px;
@@ -74,22 +79,24 @@ body{
     width: 200px;
     height: 30px;
     border-color: white;
-    border-width: 3px;
+    border-width: 1px;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
 }
 ::placeholder {
-    color: rgb(0, 0, 0);
+    color: white;
     font-size: 15px;
     text-align: center;
     opacity: 1; /* Firefox */
 }
 #serachtermInfoDiv{
-    margin-top: 1%;
+    margin-top: 0.5%;
     color: rgb(206, 202, 202);
 }
 #readyDiv{
     color: white;
     width: 70%;
-    margin-top: 5%;
+    margin-top: 3%;
     margin-left: 15%;
     margin-right: 15%;
     text-align: center;
@@ -97,7 +104,7 @@ body{
 }
 #readyInfoDiv{
     text-align: center;
-    margin-top: 1%;
+    margin-top: 0.5%;
     color: rgb(206, 202, 202);
 }
 table {
@@ -119,8 +126,8 @@ td{
     overflow: auto;
 }
 #buttonContainer{
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 3%;
+    margin-bottom: 3%;
     display: flex;
     justify-content: center;
 }
