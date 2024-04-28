@@ -58,14 +58,14 @@ def delete_file(filename):
     if exists(filename):
         remove(filename)
 
-"""
 # Test:
-links = create_list_urls()
-print(links)
-print(len(links))
-download_pdf(links[100])
-print(links[100])
-delete_file(links[100].split('/')[-1])
-# liefert 154 pdf Elemente, also genau 10Seiten * 15 PDFs + 1Seite * 4 PDFs
-# Test bestanden ;)
+"""
+if __name__ == "__main__":
+    links = create_list_urls()
+    for link in links:
+        print(link)
+    print(len(links))
+    download_pdf(links[100])
+    print(links[100])
+    delete_file(links[100].split('/')[-1])
 """

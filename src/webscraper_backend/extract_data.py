@@ -53,7 +53,7 @@ def extract_data_from_pdf(pdf_path):
             re_class = compile(r'(?<=NPS SUBCLASS\n).*?(?=\n)')
             data["classes"] = [re_class.search(text).group(0)]
         else:
-            print("Error: Expected 'Preferred Name' in table[0][0]")
+            # Expected 'Preferred Name' in table[0][0]
             data = None
         return data
     
@@ -67,7 +67,7 @@ def extract_data_from_pdf(pdf_path):
     t = text.split('\n')
     if "NMS Labs" in t[0]:
         if '&' in t[3] or 'and' in t[3]:
-            print("Error: Two chemicals in one pdf")
+            # Two chemicals in one pdf
             return None
         data["names"] = [t[3]]
     elif "The Center for Forensic Science Research and Education" in t[0]:
@@ -102,15 +102,13 @@ def extract_data_from_pdf(pdf_path):
     if len(table) in [2, 3]:
         data["formula"] = table[-1][1]
         data["molecular_mass"] = table[-1][2]
-        # The table below "2.1 CHEMICAL DATA" can either have 4 or 5 columns, and "Molecular Ion [M+]" can be missing
+        # The table below "2.1 CHEMICAL DATA" can either have 5 or 4 columns (5 are more common) and "Molecular Ion [M+]" can be missing
         if len(table[-1]) == 5:
             data["molecular_ion_[m+]"] = table[-1][3]
         elif len(table[-1]) == 4:
             # In this case, "Molecular Ion [M+]" is not given and we make a good guess based on the "Molecular Weight"
             data["molecular_ion_[m+]"] = int(float(data["molecular_mass"]))
-        else:
-            print("Error: Unexpected size of table[-1]")
-            return None
+
         data["exact_mass_[m+h]+"] = table[-1][-1]
     
     elif len(table) == 10 or len(table) == 6:
@@ -139,7 +137,7 @@ def extract_data_from_pdf(pdf_path):
         data["molecular_ion_[m+]"] = chemical_data_numbers[1]
         data["exact_mass_[m+h]+"] = chemical_data_numbers[-1]
     else:
-        print("Error: Cannnot extract pdf because of unknown length of 'table'")
+        # Cannnot extract pdf because of unknown length of 'table'
         return None
 
     return data
