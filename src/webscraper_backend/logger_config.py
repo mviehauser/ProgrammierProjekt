@@ -4,7 +4,7 @@ def setup_logger(level=logging.DEBUG, filename="src\\webscraper_backend\\scraper
     logger = logging.getLogger(__name__)
     logger.setLevel(level)
 
-    file_handler = logging.FileHandler(filename)
+    file_handler = logging.FileHandler(filename, mode="w")
     file_handler.setLevel(level)
 
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
