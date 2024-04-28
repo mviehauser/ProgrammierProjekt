@@ -1,20 +1,110 @@
 body{
     height: 100%;
-    background-image: url('./images/wallpapers/1351188.png');
+    background-image: url('images/wallpapers/1351188.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: top;
+    background-position: top; 
 }
 #welcomeText{
     color: white;
-    margin-bottom: 30px;
+    width: 70%;
+    margin-top: 2%;
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: center;
+    font-size: larger;
+}
+#cfsreLink{
+    color: rgb(206, 202, 202);
 }
 #selectText{
     color: white;
+    width: 70%;
+    margin-top: 5%;
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: center;
+    font-size: larger;
+}
+#radioButtonContainer{
+    text-align: center;
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%;
+    font-size: larger;
+    margin-bottom: 5%;
+}
+#names{
+    margin-bottom: 10px;
+}
+#iupac_name{
+    margin-bottom: 10px;
+}
+#classes{
+    margin-bottom: 10px;
+}
+#inchi_key{
+    margin-bottom: 10px;
+}
+#smiles{
+    margin-bottom: 10px;
+}
+#cas_num{
+    margin-bottom: 10px;
+}
+#formula{
+    margin-bottom: 10px;
+}
+#molecular_mass{
+    margin-bottom: 10px;
+}
+#searchTermContainer{
+    text-align: center;
+}
+#searchTermLabel{
+    color: white;
+    font-size: larger;
+}
+#searchTerm{
+    margin-left: 20px;
+    width: 200px;
+    height: 30px;
+    border-color: white;
+    border-width: 3px;
+}
+::placeholder {
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    text-align: center;
+    opacity: 1; /* Firefox */
+}
+#serachtermInfoDiv{
+    margin-top: 1%;
+    color: rgb(206, 202, 202);
+}
+#readyDiv{
+    color: white;
+    width: 70%;
+    margin-top: 5%;
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: center;
+    font-size: larger;
+}
+#readyInfoDiv{
+    text-align: center;
+    margin-top: 1%;
+    color: rgb(206, 202, 202);
 }
 table {
     border-collapse: collapse;
     width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
 }
 th, td {
     border: 1px solid #dddddd;
@@ -26,19 +116,26 @@ th {
 }
 td{
     color: white;
+    overflow: auto;
 }
-#loadButton{
-    margin-bottom: 20px;
-    margin-top: 20px;
-    width: 100px;
-    height: 50px;
-}
-#table_container{
+#buttonContainer{
+    margin-top: 5%;
+    margin-bottom: 5%;
     display: flex;
     justify-content: center;
 }
-#radioButtonContainer{
+#loadButton{
+    display: block;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 100px;
+    border: 0.5px solid;
+    background-color: rgba(0, 0, 0, 0);
     color: white;
+    font-size: larger;
+    font-weight: bolder;
+}
+#table_container{
     display: flex;
     justify-content: center;
 }

@@ -10,32 +10,32 @@
     <div id="welcomeText">
       Welcome to the Drug Search Engine by Paul Potsch and Maximilian Viehauser.
       This search engine is based on the website of
-      <a href="https://www.cfsre.org/nps-discovery/monographs"
+      <a href="https://www.cfsre.org/nps-discovery/monographs" id="cfsreLink"
         >The Centre for Forensic Science Research & Education</a
       >
     </div>
 
-
     <div id="selectText">Select a property you want to filter by:</div>
-    
+
     <div id="radioButtonContainer">
-      <div class="radioButtonContainerElement"><div>
-        <input type="radio" id="names" name="names" value="names" />
-        <label for="names">Names</label>
+      <div class="radioButtonContainerElement">
+        <div>
+          <input type="radio" id="names" name="drone" value="names" />
+          <label for="names">Names</label>
+        </div>
+        <div>
+          <input type="radio" id="iupac_name" name="drone" value="iupac_name" />
+          <label for="iupac_name">IUPAC Name</label>
+        </div>
+        <div>
+          <input type="radio" id="classes" name="drone" value="classes" />
+          <label for="classes">Classes</label>
+        </div>
+        <div>
+          <input type="radio" id="inchi_key" name="drone" value="inchi_key" />
+          <label for="inchi_key">InChI Key</label>
+        </div>
       </div>
-      <div>
-        <input type="radio" id="iupac_name" name="drone" value="iupac_name" />
-        <label for="iupac_name">IUPAC Name</label>
-      </div>
-      <div>
-        <input type="radio" id="classes" name="drone" value="classes" />
-        <label for="classes">Classes</label>
-      </div>
-      <div>
-        <input type="radio" id="inchi_key" name="drone" value="inchi_key" />
-        <label for="inchi_key">InChI Key</label>
-      </div>
-    </div>
       <div class="radioButtonContainerElement">
         <div>
           <input type="radio" id="smiles" name="drone" value="smiles" checked />
@@ -50,13 +50,39 @@
           <label for="formula">Formula</label>
         </div>
         <div>
-          <input type="radio" id="molecular_mass" name="drone" value="molecular_mass" />
+          <input
+            type="radio"
+            id="molecular_mass"
+            name="drone"
+            value="molecular_mass"
+          />
           <label for="molecular_mass">Molecular Mass</label>
         </div>
       </div>
     </div>
+    <div id="searchTermContainer">
+      <label for="searchTerm" id="searchTermLabel"
+        >Enter your search term here:</label
+      >
+      <input type="text" id="searchTerm" placeholder="Your search term" />
+      <div id="serachtermInfoDiv">
+        The search term is not case sensitive. The table content can be
+        displayed as soon as it contains the entered search term.
+      </div>
+    </div>
 
-    <button id="loadButton" onclick="loadDrugs()">Load Drugs</button>
+    <div id="readyDiv">
+      If the property has been selected and the serach term has been entered,
+      you can click on the following button to load the table content:
+    </div>
+    <div id="readyInfoDiv">
+      If the Load Drugs button is clicked without having entered a search term,
+      all data will be loaded.
+    </div>
+
+    <div id="buttonContainer">
+      <button id="loadButton" onclick="loadDrugs()">Load Drugs</button>
+    </div>
     <div id="table_container">
       <table class="table">
         <thead>
@@ -76,27 +102,50 @@
     </div>
     <script src="data.js"></script>
     <script>
+      let findSelected = () => {
+        let selected = document.querySelector("input[name='drone']:checked");
+        if (selected) {
+          return selected.value;
+        }
+        return null;
+      };
+
+      let selectedRadioButton = findSelected();
+
+      console.log(selectedRadioButton);
+
+      let radioBtns = document.querySelectorAll("input[name='drone']");
+      radioBtns.forEach((btn) => {
+        btn.addEventListener("change", () => {
+          selectedRadioButton = findSelected();
+          console.log(selectedRadioButton);
+        });
+      });
+
+      const searchTerm = document.getElementById("searchTerm");
+
       function loadDrugs() {
+        console.log(searchTerm);
 
         data = filterData();
         modifiedData = removeEntries(data);
         getTD(data);
       }
-      function removeEntries(data){
-        const modifiedData = data.map(entry => {
-        const modifiedEntry = { ...entry };
-        delete modifiedEntry["molecular_ion_[m+]"];
-        delete modifiedEntry["exact_mass_[m+h]+"];
-        delete modifiedEntry["source_name"];
-        delete modifiedEntry["source_url"];
-        delete modifiedEntry["inchi"];
-        return modifiedEntry;
-    });
-    return modifiedData;
+      function removeEntries(data) {
+        const modifiedData = data.map((entry) => {
+          const modifiedEntry = { ...entry };
+          delete modifiedEntry["molecular_ion_[m+]"];
+          delete modifiedEntry["exact_mass_[m+h]+"];
+          delete modifiedEntry["source_name"];
+          delete modifiedEntry["source_url"];
+          delete modifiedEntry["inchi"];
+          return modifiedEntry;
+        });
+        return modifiedData;
       }
       function filterData() {
-        const searchTerm = "Test";
-        const searchProperty = "smiles";
+        const searchTermText = searchTerm.value;
+        const searchProperty = selectedRadioButton;
 
         function searchJSON(json, searchTerm) {
           const results = [];
@@ -104,7 +153,7 @@
             if (
               entry[searchProperty]
                 .toLowerCase()
-                .includes(searchTerm.toLowerCase())
+                .includes(searchTermText.toLowerCase())
             ) {
               results.push(entry);
             }
@@ -112,7 +161,7 @@
           return results;
         }
 
-        return searchJSON(Data, searchTerm);
+        return searchJSON(Data, searchTermText);
       }
 
       var getTD = function (data) {
