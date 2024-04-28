@@ -5,6 +5,7 @@
     <link rel="shortcut icon" type="x-icon" href="./images/icons/lupe2.png" />
     <title>Drug Search Engine</title>
     <link rel="stylesheet" href="style.css" />
+
   </head>
   <body>
     <div id="welcomeText">
@@ -102,6 +103,43 @@
     </div>
     <script src="data.js"></script>
     <script>
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const firstLoadTransformedData = transformData(Data);
+        const firstLoadModifiedData = removeEntries(firstLoadTransformedData);
+        getTD(firstLoadModifiedData);
+      });
+
+      // transformJSON() und transformData() dienen dazu, die ursprüngliche JSON-Objekte so ab zu ändern, dass sie in der Suchmaschine angewandt werden können
+      function transformJSON(originalObj) {
+        const namesString = originalObj.names.join(", ");
+        const classesString = originalObj.classes.join(", ");
+
+        const transformedObj = {
+          names: namesString,
+          iupac_name: originalObj.iupac_name,
+          classes: classesString,
+          inchi: originalObj.inchi,
+          inchi_key: originalObj.inchi_key,
+          smiles: originalObj.smiles,
+          cas_num: originalObj.cas_num,
+          formula: originalObj.formula,
+          molecular_mass: originalObj.molecular_mass,
+          "molecular_ion_[m+]": originalObj["molecular_ion_[m+]"],
+          "exact_mass_[m+h]+": originalObj["exact_mass_[m+h]+"],
+          source_name: originalObj.source_name,
+          source_url: originalObj.source_url,
+        };
+
+        return transformedObj;
+      }
+
+      function transformData(data) {
+        const transformedData = data.map(transformJSON);
+        return transformedData;
+      }
+
+      //findeSelected() dient dazu, den gewählten Radio Button zu erkennen
       let findSelected = () => {
         let selected = document.querySelector("input[name='drone']:checked");
         if (selected) {
@@ -112,8 +150,7 @@
 
       let selectedRadioButton = findSelected();
 
-      console.log(selectedRadioButton);
-
+      //diese Funktionen dienen dazu, die Änderung der Radio Buttons zu überwachen, und bei der Änderung, den richtigen Radio Button ab zu speichern
       let radioBtns = document.querySelectorAll("input[name='drone']");
       radioBtns.forEach((btn) => {
         btn.addEventListener("change", () => {
@@ -124,13 +161,7 @@
 
       const searchTerm = document.getElementById("searchTerm");
 
-      function loadDrugs() {
-        console.log(searchTerm);
-
-        data = filterData();
-        modifiedData = removeEntries(data);
-        getTD(data);
-      }
+      //removeEntries(data) entfernt alle Einträge aus jedem JSON-Objekt im übergebenen JSON-File, die nicht gebraucht/angezeigt werden (sollen)
       function removeEntries(data) {
         const modifiedData = data.map((entry) => {
           const modifiedEntry = { ...entry };
@@ -143,7 +174,10 @@
         });
         return modifiedData;
       }
-      function filterData() {
+
+      //filterData(dataObjects) & searchJSON(json, searchTerm) dienen dazu, die searchProperty (radio buttons) und den searchTerm (text field) abzuspeichern
+      //und durchsuchen im übergebenen JSON-file die jeweilige property nach dem jeweiligen searchTerm
+      function filterData(dataObjects) {
         const searchTermText = searchTerm.value;
         const searchProperty = selectedRadioButton;
 
@@ -161,9 +195,10 @@
           return results;
         }
 
-        return searchJSON(Data, searchTermText);
+        return searchJSON(dataObjects, searchTermText);
       }
 
+      // getTD(data) lädt alle entries des übergebenen JSON-files in den tbody der HTML-Tabelle
       var getTD = function (data) {
         const body = document.querySelector("tbody");
         let tags = "";
@@ -181,7 +216,17 @@
         });
         body.innerHTML = tags;
       };
+
+      // Main-Funktion: Wird beim Klicken auf den Load Drugs Button getriggered und ruft sämtliche andere Funktionen im Programm auf
+      function loadDrugs() {
+        const transformedData = transformData(Data);
+
+        data = filterData(transformedData);
+
+        modifiedData = removeEntries(data);
+
+        getTD(modifiedData);
+      }
     </script>
   </body>
 </html>
-
