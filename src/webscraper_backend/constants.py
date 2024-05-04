@@ -36,3 +36,7 @@ DATA = {
     "source_name" : "cfsre",
     "source_url" : "",
 }
+
+JSON_PATH = "src\\JSON-files\\test.json"
+
+LINK_ARCHIVE = "src\\JSON-files\\link_archive.json"

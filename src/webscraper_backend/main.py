@@ -4,23 +4,48 @@ import logging
 # import from own modules
 import pdf_utils as pdfU
 import extract_data as ed
-from constants import CFSRE_URL
+from constants import CFSRE_URL, JSON_PATH, LINK_ARCHIVE
 import logger_config
+import incremental_loading as incL
 
 # No other function besides run_webscraper() will be implemented here
 
-def run_webscraper():
-    listData = []
-
-    links = pdfU.create_list_urls()
-    num_links = len(links)
-    num_failed_extractions = 0
-
+def run_webscraper(mode=1):
+    incL.check_mode(mode)
     # If you want to change shown logging level, change the argument in setup_logger(level=)
     logger = logger_config.setup_logger(level=logging.DEBUG)
-    logger.info(f"Found {num_links} links on {CFSRE_URL}")
+    logger.info(f"Programm is starting in mode {mode}")
 
-    for i, link in enumerate(links):
+    if mode == 1:
+        data_collection = []
+    elif mode == 2:
+         with open(JSON_PATH, 'r') as existing_json_file:
+            data_collection = json.load(existing_json_file)
+            logger.info(f"Loaded existing json file with {len(data_collection)} substances")
+            
+
+    found_links = pdfU.create_list_urls()
+    logger.info(f"Found {len(found_links)} links on {CFSRE_URL}")
+    if mode == 1:
+        # In mode 1, all links in found_links will be extracted
+        links_to_extract = found_links
+    elif mode == 2:
+        # In mode 2, only links in found_links that are not within the archived links
+        with open(LINK_ARCHIVE, 'r') as f:
+            archived_links = json.load(f)
+            logger.info(f"Loaded existing json file with {len(archived_links)} links that were found in the past")
+            links_to_extract = [x for x in found_links if x not in archived_links]
+            logger.info(f"{len(links_to_extract)} links are new on this site")
+            
+            if len(links_to_extract) == 0:
+                logger.info("There are no new files to extract. Ending the programm.")
+                exit()
+    
+    # Create a link archive that helps with incremential loading
+    incL.archive_links(found_links)
+    num_failed_extractions = 0
+
+    for i, link in enumerate(links_to_extract):
         pdfU.download_pdf(link)
 
         local_pdf_filename = link.split('/')[-1]
@@ -31,22 +56,25 @@ def run_webscraper():
             ed.format_formula(data)
             ed.format_names(data)
             data["source_url"] = link
-            listData.append(data)
-            logger.info(f"Successfully extracted {link} [{i+1}/{num_links}]")
+            data_collection.append(data)
+            logger.info(f"Successfully extracted {link} [{i+1}/{len(links_to_extract)}]")
         else:
              num_failed_extractions += 1
              logger.error(f"Failed to extract link #{i+1} {link}")
             
         pdfU.delete_file(local_pdf_filename)
 
-    logger.info(f"Extracted {num_links - num_failed_extractions} / {num_links} PDFs")
-    # for testing: (maybe later a name is being produced dynamically, depending on the date or version of the webscraper)
-    json_path = "src\\JSON-files\\test.json"
-    with open(json_path, mode="w") as json_file:
-         json.dump(listData, json_file, indent=4)
+    logger.info(f"Was able to extract {len(links_to_extract) - num_failed_extractions} / {len(links_to_extract)} PDFs")
     
-    logger.info("Created .json-file ({json_path}) and finished the scraping-process.")
+    with open(JSON_PATH, mode="w") as json_file:
+         json.dump(data_collection, json_file, indent=4)
+    
+    logger.info(f"Created json-file with {len(data_collection)} substances under {JSON_PATH} and finished the scraping-process.")
     
 
 if __name__ == '__main__':
-        run_webscraper()
+        # Give run_webscraper one of the following arguments:
+        # mode=1, load everything completely new (also the default, because mode 2 and 3 only work if previous data is on your local pc)
+        # mode=2, load only new Substances
+        # currently missing mode=3, load new Substances as well as changes to existing data
+        run_webscraper(mode=2)
