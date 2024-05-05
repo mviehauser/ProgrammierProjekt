@@ -143,9 +143,9 @@ def extract_data_from_pdf(pdf_path):
     return data
 
 def format_names(data):
-    for x in ['Not Available', 'None Available', 'Not Applicable']:
-        if x in data["names"][1:]:
-            data["names"].remove(x)
+    for placeholder in ['Not Available', 'None Available', 'Not Applicable']:
+        if placeholder in data["names"][1:]:
+            data["names"].remove(placeholder)
 
 """
 Edits data["formula"] by removing '\n' and combining the two lines
@@ -177,8 +177,9 @@ def add_smiles(data):
         smiles = MolToSmiles(mol, canonical = True)
         data["smiles"] = smiles
 
-# Testing:
+# Unit Test:
 if __name__ == "__main__":
+    # you can try it with different pdfs in 'pdf samples'
     pdf_path = "src\\webscraper_backend\\pdf samples\\FluoroFuranylfentanyl_012319_ToxicologyAnalyticalReport.pdf"
 
     data = extract_data_from_pdf(pdf_path)

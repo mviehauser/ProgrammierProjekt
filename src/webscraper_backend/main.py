@@ -37,9 +37,9 @@ def run_webscraper(mode=1):
             links_to_extract = [x for x in found_links if x not in archived_links]
             logger.info(f"{len(links_to_extract)} links are new on this site")
             
-            if len(links_to_extract) == 0:
-                logger.info("There are no new files to extract. Ending the programm.")
-                exit()
+        if len(links_to_extract) == 0:
+            logger.info("There are no new files to extract. Ending the programm.")
+            exit()
     
     # Create a link archive that helps with incremential loading
     incL.archive_links(found_links)

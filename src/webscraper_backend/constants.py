@@ -37,6 +37,6 @@ DATA = {
     "source_url" : "",
 }
 
-JSON_PATH = "src\\JSON-files\\test.json"
+JSON_PATH = "src\\JSON-files\\data.json"
 
 LINK_ARCHIVE = "src\\JSON-files\\link_archive.json"

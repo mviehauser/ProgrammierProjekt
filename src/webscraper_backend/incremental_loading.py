@@ -11,6 +11,9 @@ def check_mode(mode):
 
 """
 Archives list of links, so that we can check which link is new in every run
+
+It is possible to take all 'source_url' from data.json, but then you're missing the links which could not be extracted in the past, 
+since ed.extract_data_from_pdf() returns None if the pdf could not be extracted.
 """
 def archive_links(links):
     with open(LINK_ARCHIVE, mode="w") as json_file:
