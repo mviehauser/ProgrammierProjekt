@@ -19,9 +19,8 @@ def run_webscraper(mode=1):
     if mode == 1:
         data_collection = []
     elif mode == 2:
-         with open(JSON_PATH, 'r') as existing_json_file:
-            data_collection = json.load(existing_json_file)
-            logger.info(f"Loaded existing json file with {len(data_collection)} substances")
+        data_collection = incL.load_existing_data()
+        logger.info(f"Loaded existing json file with {len(data_collection)} substances")
             
 
     found_links = pdfU.create_list_urls()
@@ -30,19 +29,17 @@ def run_webscraper(mode=1):
         # In mode 1, all links in found_links will be extracted
         links_to_extract = found_links
     elif mode == 2:
-        # In mode 2, only links in found_links that are not within the archived links
+        # In mode 2, only links in found_links that are not within the archived links will be extracted
         with open(LINK_ARCHIVE, 'r') as f:
             archived_links = json.load(f)
-            logger.info(f"Loaded existing json file with {len(archived_links)} links that were found in the past")
-            links_to_extract = [x for x in found_links if x not in archived_links]
-            logger.info(f"{len(links_to_extract)} links are new on this site")
+        logger.info(f"Loaded existing json file with {len(archived_links)} links that were found in the past")
+        links_to_extract = [x for x in found_links if x not in archived_links]
+        logger.info(f"{len(links_to_extract)} links are new on this site")
             
         if len(links_to_extract) == 0:
             logger.info("There are no new files to extract. Ending the programm.")
             exit()
     
-    # Create a link archive that helps with incremential loading
-    incL.archive_links(found_links)
     num_failed_extractions = 0
 
     for i, link in enumerate(links_to_extract):
@@ -59,15 +56,18 @@ def run_webscraper(mode=1):
             data_collection.append(data)
             logger.info(f"Successfully extracted {link} [{i+1}/{len(links_to_extract)}]")
         else:
-             num_failed_extractions += 1
-             logger.error(f"Failed to extract link #{i+1} {link}")
+            num_failed_extractions += 1
+            logger.error(f"Failed to extract link #{i+1} {link}")
             
         pdfU.delete_file(local_pdf_filename)
 
     logger.info(f"Was able to extract {len(links_to_extract) - num_failed_extractions} / {len(links_to_extract)} PDFs")
     
     with open(JSON_PATH, mode="w") as json_file:
-         json.dump(data_collection, json_file, indent=4)
+        json.dump(data_collection, json_file, indent=4)
+    
+    # Create a link archive that helps with incremential loading
+    incL.archive_links(found_links)
     
     logger.info(f"Created json-file with {len(data_collection)} substances under {JSON_PATH} and finished the scraping-process.")
     
