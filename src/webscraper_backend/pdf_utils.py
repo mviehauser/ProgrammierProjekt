@@ -58,9 +58,9 @@ def delete_file(filename):
     if exists(filename):
         remove(filename)
 
-# Test:
-"""
+
 if __name__ == "__main__":
+    # Unit Test
     links = create_list_urls()
     for link in links:
         print(link)
@@ -68,4 +68,3 @@ if __name__ == "__main__":
     download_pdf(links[100])
     print(links[100])
     delete_file(links[100].split('/')[-1])
-"""

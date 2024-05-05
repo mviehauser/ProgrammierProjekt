@@ -177,8 +177,9 @@ def add_smiles(data):
         smiles = MolToSmiles(mol, canonical = True)
         data["smiles"] = smiles
 
-# Unit Test:
+
 if __name__ == "__main__":
+    # Unit Test
     # you can try it with different pdfs in 'pdf samples'
     pdf_path = "src\\webscraper_backend\\pdf samples\\FluoroFuranylfentanyl_012319_ToxicologyAnalyticalReport.pdf"
 

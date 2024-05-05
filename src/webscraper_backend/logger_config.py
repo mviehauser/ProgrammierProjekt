@@ -22,7 +22,7 @@ def setup_logger(level=logging.DEBUG, filename="src\\webscraper_backend\\scraper
     return logger
 
 if __name__ == "__main__":
-    # test
+    # Unit Test
     logger = setup_logger()
     logger.debug('debug-message')
     logger.info('info-message')

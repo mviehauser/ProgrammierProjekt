@@ -4,6 +4,7 @@ import logging
 # import from own modules
 import pdf_utils as pdfU
 import extract_data as ed
+from validation import validate_data
 from constants import CFSRE_URL, JSON_PATH, LINK_ARCHIVE
 import logger_config
 import incremental_loading as incL
@@ -53,11 +54,12 @@ def run_webscraper(mode=1):
             ed.format_formula(data)
             ed.format_names(data)
             data["source_url"] = link
+            validate_data(data)
             data_collection.append(data)
             logger.info(f"Successfully extracted {link} [{i+1}/{len(links_to_extract)}]")
         else:
             num_failed_extractions += 1
-            logger.error(f"Failed to extract link #{i+1} {link}")
+            logger.error(f"Failed to extract {link} [{i+1}/{len(links_to_extract)}]")
             
         pdfU.delete_file(local_pdf_filename)
 
@@ -77,4 +79,4 @@ if __name__ == '__main__':
         # mode=1, load everything completely new (also the default, because mode 2 and 3 only work if previous data is on your local pc)
         # mode=2, load only new Substances
         # currently missing mode=3, load new Substances as well as changes to existing data
-        run_webscraper(mode=2)
+        run_webscraper(mode=1)

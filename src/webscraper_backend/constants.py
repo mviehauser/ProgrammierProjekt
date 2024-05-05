@@ -35,6 +35,7 @@ DATA = {
     "exact_mass_[m+h]+": "",
     "source_name" : "cfsre",
     "source_url" : "",
+    "valid" : None,
 }
 
 JSON_PATH = "src\\JSON-files\\data.json"
