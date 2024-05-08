@@ -1,3 +1,5 @@
+import os
+
 # This file contains constants, which are useful in other files.
 
 
@@ -38,6 +40,13 @@ DATA = {
     "valid" : None,
 }
 
-JSON_PATH = "src\\JSON-files\\data.json"
+current_dir = os.getcwd()
+parent_dir = os.path.abspath(os.path.join(current_dir, ".."))
+target_dir = os.path.join(parent_dir, "JSON-files")
+if not os.path.exists(target_dir):
+    os.makedirs(target_dir)
 
-LINK_ARCHIVE = "src\\JSON-files\\link_archive.json"
+
+JSON_PATH = os.path.join(target_dir, "data.json")
+
+LINK_ARCHIVE = os.path.join(target_dir, "link_archive.json")
