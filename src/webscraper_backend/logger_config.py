@@ -1,6 +1,6 @@
 import logging
 
-def setup_logger(level=logging.DEBUG, filename="src\\webscraper_backend\\scraper.log", console_output=True):
+def setup_logger(level=logging.DEBUG, filename="scraper.log", console_output=True):
     logger = logging.getLogger(__name__)
     logger.setLevel(level)
 
