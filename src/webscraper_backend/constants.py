@@ -50,3 +50,5 @@ if not os.path.exists(target_dir):
 JSON_PATH = os.path.join(target_dir, "data.json")
 
 LINK_ARCHIVE = os.path.join(target_dir, "link_archive.json")
+
+JS_DATA_PATH = os.path.join(target_dir, "js_data.js")

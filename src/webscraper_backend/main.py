@@ -5,7 +5,7 @@ import logging
 import pdf_utils as pdfU
 import extract_data as ed
 from validation import validate_data
-from constants import CFSRE_URL, JSON_PATH, LINK_ARCHIVE
+from constants import CFSRE_URL, JSON_PATH, LINK_ARCHIVE, JS_DATA_PATH
 import logger_config
 import incremental_loading as incL
 
@@ -67,12 +67,17 @@ def run_webscraper(mode=1):
     
     with open(JSON_PATH, mode="w") as json_file:
         json.dump(data_collection, json_file, indent=4)
-    
+
+    # Create a .js file for the frontend
+    js_code = f"const Data = {json.dumps(data_collection)}"
+    with open(JS_DATA_PATH, mode="w") as js_file:
+        js_file.write(js_code)
+
     # Create a link archive that helps with incremential loading
     incL.archive_links(found_links)
     
-    logger.info(f"Created json-file with {len(data_collection)} substances under {JSON_PATH} and finished the scraping-process.")
-    
+    logger.info(f"Created json-file with {len(data_collection)} substances under {JSON_PATH}.")
+    logger.info(f"Created javascript-file with {len(data_collection)} substances under {JS_DATA_PATH} and finished the scraping-process.")
 
 if __name__ == '__main__':
         # Give run_webscraper one of the following arguments:
