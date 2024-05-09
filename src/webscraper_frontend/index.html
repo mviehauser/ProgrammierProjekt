@@ -101,7 +101,7 @@
         <tbody></tbody>
       </table>
     </div>
-    <script src="data.js"></script>
+    <script src="../JSON-files/js_data.js"></script>
     <script>
 
       document.addEventListener("DOMContentLoaded", function () {
@@ -165,11 +165,12 @@
       function removeEntries(data) {
         const modifiedData = data.map((entry) => {
           const modifiedEntry = { ...entry };
+          delete modifiedEntry["inchi"];
           delete modifiedEntry["molecular_ion_[m+]"];
           delete modifiedEntry["exact_mass_[m+h]+"];
           delete modifiedEntry["source_name"];
           delete modifiedEntry["source_url"];
-          delete modifiedEntry["inchi"];
+          delete modifiedEntry["valid"];
           return modifiedEntry;
         });
         return modifiedData;
