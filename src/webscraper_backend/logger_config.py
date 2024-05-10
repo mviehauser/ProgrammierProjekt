@@ -1,10 +1,10 @@
 import logging
 
-def setup_logger(level=logging.DEBUG, filename="scraper.log", console_output=True):
+def setup_logger(log_path, level=logging.DEBUG, console_output=True):
     logger = logging.getLogger(__name__)
     logger.setLevel(level)
 
-    file_handler = logging.FileHandler(filename, mode="w")
+    file_handler = logging.FileHandler(log_path, mode="w")
     file_handler.setLevel(level)
 
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
@@ -23,7 +23,7 @@ def setup_logger(level=logging.DEBUG, filename="scraper.log", console_output=Tru
 
 if __name__ == "__main__":
     # Unit Test
-    logger = setup_logger()
+    logger = setup_logger("scraper.log")
     logger.debug('debug-message')
     logger.info('info-message')
     logger.warning('warning-message')

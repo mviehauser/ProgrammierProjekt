@@ -23,5 +23,5 @@ Um dieses Projekt zu verwenden, benötigen Sie Folgendes:
     ```
 
 ## Benutzung
-- **webscraper_backend**: Öffnen Sie die Datei "main.py" und drücken sie auf den Run-Button ihrer IDE. Alle weiteren Informationen werden dann in der Konsole ihrer IDE angezeigt.
-- **webscraper_frontend**: Nachdem der obere Schritt durchgeführt wurde, öffnen Sie die Datei "index.html". In dieser Datei nun einen Rechtsklick ausführen und auf den Vorschlag "Open with Live Server" wählen. Es öffnet sich automatisch eine Website, auf der alle zuvor erstellten Informationen nach deren Eigenschaften durchsucht werden können. TIPP: Bedienen Sie die Website auf Englisch.
+- **webscraper_backend**: Innerhalb des ProgrammierProjekt-Ordners "main.py" ausführen und abwarten bis das Programm fertig ist.
+- **webscraper_frontend**: "index.html" mit einem Browser öffnen. TIPP: Bedienen Sie die Website auf Englisch.

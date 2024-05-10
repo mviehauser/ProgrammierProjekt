@@ -5,7 +5,8 @@ import logging
 import pdf_utils as pdfU
 import extract_data as ed
 from validation import validate_data
-from constants import CFSRE_URL, JSON_PATH, LINK_ARCHIVE, JS_DATA_PATH
+from constants import CFSRE_URL
+import pathmanagement
 import logger_config
 import incremental_loading as incL
 
@@ -13,9 +14,11 @@ import incremental_loading as incL
 
 def run_webscraper(mode=1):
     incL.check_mode(mode)
+    JSON_PATH, LINK_ARCHIVE_PATH, JS_DATA_PATH, LOG_PATH = pathmanagement.create_file_paths()
     # If you want to change shown logging level, change the argument in setup_logger(level=)
-    logger = logger_config.setup_logger(level=logging.DEBUG)
+    logger = logger_config.setup_logger(LOG_PATH, level=logging.DEBUG)
     logger.info(f"Programm is starting in mode {mode}")
+
 
     if mode == 1:
         data_collection = []
@@ -31,7 +34,7 @@ def run_webscraper(mode=1):
         links_to_extract = found_links
     elif mode == 2:
         # In mode 2, only links in found_links that are not within the archived links will be extracted
-        with open(LINK_ARCHIVE, 'r') as f:
+        with open(LINK_ARCHIVE_PATH, 'r') as f:
             archived_links = json.load(f)
         logger.info(f"Loaded existing json file with {len(archived_links)} links that were found in the past")
         links_to_extract = [x for x in found_links if x not in archived_links]
@@ -64,19 +67,17 @@ def run_webscraper(mode=1):
         pdfU.delete_file(local_pdf_filename)
 
     logger.info(f"Was able to extract {len(links_to_extract) - num_failed_extractions} / {len(links_to_extract)} PDFs")
+    # Create a link archive that helps with incremential loading
+    incL.archive_links(found_links, LINK_ARCHIVE_PATH)
     
     with open(JSON_PATH, mode="w") as json_file:
         json.dump(data_collection, json_file, indent=4)
+    logger.info(f"Created json-file with {len(data_collection)} substances under {JSON_PATH}.")
 
     # Create a .js file for the frontend
     js_code = f"const Data = {json.dumps(data_collection)}"
     with open(JS_DATA_PATH, mode="w") as js_file:
         js_file.write(js_code)
-
-    # Create a link archive that helps with incremential loading
-    incL.archive_links(found_links)
-    
-    logger.info(f"Created json-file with {len(data_collection)} substances under {JSON_PATH}.")
     logger.info(f"Created javascript-file with {len(data_collection)} substances under {JS_DATA_PATH} and finished the scraping-process.")
 
 if __name__ == '__main__':

@@ -28,8 +28,11 @@ def validate_data(data):
 if __name__ == "__main__":
     # Unit Test
     import incremental_loading
+    import pathmanagement
 
-    data_collection = incremental_loading.load_existing_data()
+    JSON_PATH = pathmanagement.create_file_paths()[0]
+
+    data_collection = incremental_loading.load_existing_data(JSON_PATH)
     
     for data in data_collection:
         data["valid"] = None
