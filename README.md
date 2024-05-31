@@ -13,14 +13,13 @@ Unter dem Ordner 'src' befindet sich der Sourcecode:
 
 ## Anforderungen
 Um dieses Projekt zu verwenden, benötigen Sie Folgendes:
-- **Visual Studio Code**: Eine Entwicklungsumgebung, mit der sowohl das backend, als auch das frontend bedient werden kann.
-- **Live Server Extension**: Nach dem Öffnen der IDE VS Code muss der Reiter "Extensions" (Links am Rand) geöffnet werden und nach der Extension "Live Server" gesucht werden. Diese Extension muss anschließend installiert werden.
 - **Python**: Eine aktuelle Python-Version. Das Projekt wurde mit Python 3.12.2 getestet.
 - **Bibliotheken**: Es werden einige Bibliotheken verwendet, die nicht Teil der Python-Standardbibliothek sind. Diese können mit pip wie folgt installiert werden:
 
     ```bash
     pip install pdfplumber rdkit requests beautifulsoup4
     ```
+- **Browser**: Für das öffnen der index.html-Datei und somit die visuelle Darstellung sowie das Durchsuchen der Daten ist ein Browser notwendig.
 
 ## Benutzung
 - **webscraper_backend**: Innerhalb des ProgrammierProjekt-Ordners "main.py" ausführen und abwarten bis das Programm fertig ist.
