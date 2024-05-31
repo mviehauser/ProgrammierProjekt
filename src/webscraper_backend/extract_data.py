@@ -1,4 +1,5 @@
 import pdfplumber
+import requests
 from re import compile, search, DOTALL
 from constants import DATA
 
@@ -49,9 +50,11 @@ def extract_data_from_pdf(pdf_path):
             data["molecular_mass"] = table[6][1]
             data["molecular_ion_[m+]"] = table[7][1]
             data["exact_mass_[m+h]+"] = table[8][1]
-            # Classes:
+
             re_class = compile(r'(?<=NPS SUBCLASS\n).*?(?=\n)')
             data["classes"] = [re_class.search(text).group(0)]
+
+            data["inchi"] = fetch_opsin_data(data["iupac_name"])
         else:
             # Expected 'Preferred Name' in table[0][0]
             data = None
@@ -170,12 +173,21 @@ Generates SMILES from data["inchi"] and saves it in data["smiles"]
 Cannot be generated from data["inchi_key"], since "inchi_key" is a hashed InChI(-String/-Code)
 """
 def add_smiles(data):
-    if i:=data["inchi"]:
-        mol = MolFromInchi(i)
+    if data["inchi"]:
+        mol = MolFromInchi(data["inchi"])
         if mol is None:
             return "Invalid InChIKey"
         smiles = MolToSmiles(mol, canonical = True)
         data["smiles"] = smiles
+
+def fetch_opsin_data(iupac_name):
+    opsin_url = f"https://opsin.ch.cam.ac.uk/opsin/{iupac_name}.json"
+    res = requests.get(opsin_url)
+    if res.status_code != 200:
+        return None
+    data = res.json()
+    inchi_str = data['stdinchi']
+    return inchi_str
 
 
 if __name__ == "__main__":
@@ -188,3 +200,4 @@ if __name__ == "__main__":
     format_formula(data)
     format_names(data)
     print(data)
+    print(fetch_opsin_data("2-[2-[(4-ethoxyphenyl)methyl]-5-nitro-benzimidazol-1-yl]-N-ethyl-ethanamine"))

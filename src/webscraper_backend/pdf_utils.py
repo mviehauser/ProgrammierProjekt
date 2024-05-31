@@ -37,7 +37,7 @@ def create_list_urls():
 
     links = []
 
-    # .find_all('a', href = True) finds all anchor-elements and puts everything from <a> to </a> in a list
+    # .find_all('a', href = True) finds all anchor-elements
     # by using ['href'], we only refer to the string past 'href ='
     # all relevant pdf-links have "/images/monographs" and ".pdf" as substrings
     # since these are relative links, it's important to put "https://www.cfsre.org" in front

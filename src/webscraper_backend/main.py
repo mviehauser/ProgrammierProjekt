@@ -1,7 +1,6 @@
 import json
 import logging
 
-# import from own modules
 import pdf_utils as pdfU
 import extract_data as ed
 from validation import validate_data
@@ -10,22 +9,18 @@ import pathmanagement
 import logger_config
 import incremental_loading as incL
 
-# No other function besides run_webscraper() will be implemented here
-
-def run_webscraper(mode=1):
+def run_webscraper(mode):
     incL.check_mode(mode)
     JSON_PATH, LINK_ARCHIVE_PATH, JS_DATA_PATH, LOG_PATH = pathmanagement.create_file_paths()
     # If you want to change shown logging level, change the argument in setup_logger(level=)
     logger = logger_config.setup_logger(LOG_PATH, level=logging.DEBUG)
     logger.info(f"Programm is starting in mode {mode}")
 
-
     if mode == 1:
         data_collection = []
     elif mode == 2:
-        data_collection = incL.load_existing_data()
+        data_collection = incL.load_existing_data(JSON_PATH)
         logger.info(f"Loaded existing json file with {len(data_collection)} substances")
-            
 
     found_links = pdfU.create_list_urls()
     logger.info(f"Found {len(found_links)} links on {CFSRE_URL}")
@@ -78,11 +73,11 @@ def run_webscraper(mode=1):
     js_code = f"const Data = {json.dumps(data_collection)}"
     with open(JS_DATA_PATH, mode="w") as js_file:
         js_file.write(js_code)
-    logger.info(f"Created javascript-file with {len(data_collection)} substances under {JS_DATA_PATH} and finished the scraping-process.")
+    logger.info(f"Created javascript-file under {JS_DATA_PATH} and finished the scraping-process.")
 
 if __name__ == '__main__':
         # Give run_webscraper one of the following arguments:
-        # mode=1, load everything completely new (also the default, because mode 2 and 3 only work if previous data is on your local pc)
+        # mode=1, load everything completely new
         # mode=2, load only new Substances
         # currently missing mode=3, load new Substances as well as changes to existing data
-        run_webscraper(mode=1)
+        run_webscraper(1)
