@@ -16,31 +16,30 @@ def run_webscraper(mode):
     logger = logger_config.setup_logger(LOG_PATH, level=logging.DEBUG)
     logger.info(f"Programm is starting in mode {mode}")
 
-    if mode == 1:
-        data_collection = []
-    elif mode == 2:
-        data_collection = incL.load_existing_data(JSON_PATH)
-        logger.info(f"Loaded existing json file with {len(data_collection)} substances")
-
     found_links = pdfU.create_list_urls()
     logger.info(f"Found {len(found_links)} links on {CFSRE_URL}")
+
+    date_strings = incL.fetch_date_strings()
+
     if mode == 1:
+        data_collection = []
         # In mode 1, all links in found_links will be extracted
         links_to_extract = found_links
-    elif mode == 2:
-        # In mode 2, only links in found_links that are not within the archived links will be extracted
+    else:
+        data_collection = incL.load_existing_data(JSON_PATH)
+        logger.info(f"Loaded data.json with {len(data_collection)} substances")
+
         with open(LINK_ARCHIVE_PATH, 'r') as f:
             archived_links = json.load(f)
-        logger.info(f"Loaded existing json file with {len(archived_links)} links that were found in the past")
+        logger.info(f"Loaded link_archive.json with {len(archived_links)} links that were found in the past")
         links_to_extract = [x for x in found_links if x not in archived_links]
         logger.info(f"{len(links_to_extract)} links are new on this site")
-            
-        if len(links_to_extract) == 0:
-            logger.info("There are no new files to extract. Ending the programm.")
-            exit()
+    
+    if len(links_to_extract) == 0:
+        logger.info("There are no new files to extract. Ending the programm.")
+        exit()
     
     num_failed_extractions = 0
-    date_strings = incL.fetch_date_strings()
 
     for i, link in enumerate(links_to_extract):
         pdfU.download_pdf(link)
@@ -82,4 +81,4 @@ if __name__ == '__main__':
         # mode=1, load everything completely new
         # mode=2, load only new Substances
         # currently missing mode=3, load new Substances as well as changes to existing data
-        run_webscraper(1)
+        run_webscraper(2)
