@@ -23,7 +23,7 @@ def run_webscraper(mode):
 
     if mode == 1:
         data_collection = []
-        # In mode 1, all links in found_links will be extracted
+        # In mode 1, all found_links will be extracted
         links_to_extract = found_links
     else:
         data_collection = incL.load_existing_data(JSON_PATH)
@@ -34,6 +34,20 @@ def run_webscraper(mode):
         logger.info(f"Loaded link_archive.json with {len(archived_links)} links that were found in the past")
         links_to_extract = [x for x in found_links if x not in archived_links]
         logger.info(f"{len(links_to_extract)} links are new on this site")
+    
+    if mode == 3:
+        modified_pdf_links = []
+
+        for found_link, date_string in zip(found_links, date_strings):
+            for data in data_collection:
+                if found_link == data["source_url"] and incL.date_string_to_date(data["last_modified"]) < incL.date_string_to_date(date_string):
+                    modified_pdf_links.append(found_link)
+                    data_collection.remove(data)
+                    break
+
+        logger.info(f"{len(modified_pdf_links)} pdfs are modified")
+        links_to_extract.extend(modified_pdf_links)
+
     
     if len(links_to_extract) == 0:
         logger.info("There are no new files to extract. Ending the programm.")
@@ -80,5 +94,5 @@ if __name__ == '__main__':
         # Give run_webscraper one of the following arguments:
         # mode=1, load everything completely new
         # mode=2, load only new Substances
-        # currently missing mode=3, load new Substances as well as changes to existing data
-        run_webscraper(2)
+        # mode=3, load new Substances as well as changes to existing data
+        run_webscraper(3)

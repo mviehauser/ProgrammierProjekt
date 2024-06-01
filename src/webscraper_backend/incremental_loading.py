@@ -4,6 +4,7 @@ from os.path import exists
 import requests
 from bs4 import BeautifulSoup
 from constants import CFSRE_URL, HEADERS
+from datetime import datetime
 
 """
 There are only 3 modes, therefore the mode has to be a valid number
@@ -34,6 +35,7 @@ def archive_links(links, link_archive_path):
 
 """
     date_string-Format: yyyy-mm-dd
+    .JSON-files can store Strings, but not datetime objects
 """
 def fetch_date_strings():
     page_to_scrape = requests.get(CFSRE_URL, headers = HEADERS)
@@ -47,11 +49,20 @@ def fetch_date_strings():
     
     return dates
 
+def date_string_to_date(date_string):
+    [year, month, day] = date_string.split("-")
+    return datetime(int(year), int(month), int(day))
+
 # Unit Test for mode 2:
 # Delete some links from src/JSON-files/link_archive.json. Then run main.py while making sure to set mode=2
 # This simulates that new pdf-files are found on the website
+
+# Unit Test for mode 3:
+# Set 'last-modified' of some chemicals to an older date
+# this simulates that a pdf has been modified and updated the date
 
 if __name__ == "__main__":
     dates = fetch_date_strings()
     print(dates)
     print(len(dates))
+    print(date_string_to_date(dates[0]) > date_string_to_date(dates[1]))

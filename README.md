@@ -13,7 +13,7 @@ Unter dem Ordner 'src' befindet sich der Sourcecode:
 
 ## Anforderungen
 Um dieses Projekt zu verwenden, benötigen Sie Folgendes:
-- **Python**: Eine aktuelle Python-Version. Das Projekt wurde mit Python 3.12.2 getestet.
+- **Python**: Eine aktuelle Python-Version. Das Projekt wurde mit Python 3.12.3 getestet.
 - **Bibliotheken**: Es werden einige Bibliotheken verwendet, die nicht Teil der Python-Standardbibliothek sind. Diese können mit pip wie folgt installiert werden:
 
     ```bash
