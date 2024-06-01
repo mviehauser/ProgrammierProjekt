@@ -26,11 +26,10 @@ def run_webscraper(mode):
         # In mode 1, all found_links will be extracted
         links_to_extract = found_links
     else:
-        data_collection = incL.load_existing_data(JSON_PATH)
+        data_collection = incL.load_json(JSON_PATH)
         logger.info(f"Loaded data.json with {len(data_collection)} substances")
 
-        with open(LINK_ARCHIVE_PATH, 'r') as f:
-            archived_links = json.load(f)
+        archived_links = incL.load_json(LINK_ARCHIVE_PATH)
         logger.info(f"Loaded link_archive.json with {len(archived_links)} links that were found in the past")
         links_to_extract = [x for x in found_links if x not in archived_links]
         logger.info(f"{len(links_to_extract)} links are new on this site")
@@ -95,4 +94,4 @@ if __name__ == '__main__':
         # mode=1, load everything completely new
         # mode=2, load only new Substances
         # mode=3, load new Substances as well as changes to existing data
-        run_webscraper(3)
+        run_webscraper(2)

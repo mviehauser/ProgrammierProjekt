@@ -1,5 +1,4 @@
 import json
-from os.path import exists
 
 import requests
 from bs4 import BeautifulSoup
@@ -14,14 +13,15 @@ def check_mode(mode):
         raise ValueError("You can only choose between mode 1, 2 and 3")
     
 """
-Returns the existing data as list of dicts
+Returns the existing data
 In case there is no file, an empty list will be returned
 """
-def load_existing_data(json_path):
-    if exists(json_path) == False:
+def load_json(path):
+    try:
+        with open(path, 'r') as existing_data_file:
+            return json.load(existing_data_file)
+    except Exception as e:
         return []
-    with open(json_path, 'r') as existing_data_file:
-        return json.load(existing_data_file)
 
 """
 Archives list of links, so that we can check which link is new in every run
