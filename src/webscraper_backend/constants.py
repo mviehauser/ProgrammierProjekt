@@ -33,5 +33,6 @@ DATA = {
     "exact_mass_[m+h]+": "",
     "source_name" : "cfsre",
     "source_url" : "",
+    "last_modified" : None,
     "valid" : None,
 }

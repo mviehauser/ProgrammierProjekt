@@ -19,6 +19,7 @@
         "exact_mass_[m+h]+": "351.2431",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/ortho-Methylfentanyl-New-Drug-Monograph-NPS-Discovery-122023.pdf",
+        "last_modified": "2023-12-20",
         "valid": true
     },
     {
@@ -39,6 +40,7 @@
         "exact_mass_[m+h]+": "369.1921",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-Desethyl-Etonitazene-New-Drug-Monograph-NPS-Discovery-113023.pdf",
+        "last_modified": "2023-11-30",
         "valid": true
     },
     {
@@ -60,6 +62,7 @@
         "exact_mass_[m+h]+": "475.1047",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Rilmazafone-New-Drug-Monograph-NPS-Discovery-112923.pdf",
+        "last_modified": "2023-11-29",
         "valid": null
     },
     {
@@ -80,6 +83,7 @@
         "exact_mass_[m+h]+": "289.1547",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/MDMB-ICA-New-Drug-Monograph-NPS-Discovery-112823.pdf",
+        "last_modified": "2023-11-28",
         "valid": true
     },
     {
@@ -100,6 +104,7 @@
         "exact_mass_[m+h]+": "359.2329",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/MDMB-PICA-New-Drug-Monograph-NPS-Discovery-112823.pdf",
+        "last_modified": "2023-11-28",
         "valid": true
     },
     {
@@ -122,6 +127,7 @@
         "exact_mass_[m+h]+": "201.1386",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Medetomidine-New-Drug-Monograph-NPS-Discovery-112723.pdf",
+        "last_modified": "2023-11-27",
         "valid": true
     },
     {
@@ -142,6 +148,7 @@
         "exact_mass_[m+h]+": "370.1108",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/NMDMSB-New-Drug-Monograph-NPS-Discovery-112223.pdf",
+        "last_modified": "2023-11-22",
         "valid": true
     },
     {
@@ -164,6 +171,7 @@
         "exact_mass_[m+h]+": "304.1656",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/MDMB-5Me-INACA-New-Drug-Monograph-NPS-Discovery-112123.pdf",
+        "last_modified": "2023-11-21",
         "valid": true
     },
     {
@@ -187,6 +195,7 @@
         "exact_mass_[m+h]+": "319.0399",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/4--Chlorodiazepam-New-Drug-Monograph-NPS-Discovery-112023.pdf",
+        "last_modified": "2023-11-20",
         "valid": true
     },
     {
@@ -209,6 +218,7 @@
         "exact_mass_[m+h]+": "421.0921",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/CHO-4-Me-5-Br-FUBOXPYRA-New-Drug-Monograph-NPS-Discovery-230628.pdf",
+        "last_modified": "2023-06-28",
         "valid": true
     },
     {
@@ -230,6 +240,7 @@
         "exact_mass_[m+h]+": "346.2125",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/MDMB-BINACA-New-Drug-Monograph-NPS-Discovery-230627.pdf",
+        "last_modified": "2023-06-27",
         "valid": true
     },
     {
@@ -250,6 +261,7 @@
         "exact_mass_[m+h]+": "290.1499",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/MDMB-INACA-New-Drug-Monograph-NPS-Discovery-230626.pdf",
+        "last_modified": "2023-06-26",
         "valid": true
     },
     {
@@ -271,6 +283,7 @@
         "exact_mass_[m+h]+": "381.1921",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-Pyrrolidino-Metonitazene-New-Drug-Monograph-NPS-Discovery-230623.pdf",
+        "last_modified": "2023-06-23",
         "valid": true
     },
     {
@@ -292,6 +305,7 @@
         "exact_mass_[m+h]+": "409.2234",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-Pyrrolidino-Protonitazene-New-Drug-Monograph-NPS-Discovery-230622.pdf",
+        "last_modified": "2023-06-22",
         "valid": true
     },
     {
@@ -314,6 +328,7 @@
         "exact_mass_[m+h]+": "366.0699",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/25B-NBOH-New-Drug-Monograph-NPS-Discovery-230621.pdf",
+        "last_modified": "2023-06-21",
         "valid": true
     },
     {
@@ -338,6 +353,7 @@
         "exact_mass_[m+h]+": "248.1645",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/4-Methylmethylphenidate-New-Drug-Monograph-NPS-Discovery-230620.pdf",
+        "last_modified": "2023-06-20",
         "valid": true
     },
     {
@@ -367,6 +383,7 @@
         "exact_mass_[m+h]+": "226.1438",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Trimethoxyamphetamine-123022-CFSRE-Toxicology-Report.pdf",
+        "last_modified": "2022-12-30",
         "valid": true
     },
     {
@@ -389,6 +406,7 @@
         "exact_mass_[m+h]+": "383.2078",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-Desethyl-Isotonitazene-121922-CFSRE-Chemistry-Report.pdf",
+        "last_modified": "2022-12-19",
         "valid": true
     },
     {
@@ -410,6 +428,7 @@
         "exact_mass_[m+h]+": "236.1445",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Fluorexetamine-121622-CFSRE-Toxicology-Report.pdf",
+        "last_modified": "2022-12-16",
         "valid": true
     },
     {
@@ -436,6 +455,7 @@
         "exact_mass_[m+h]+": "178.1226",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Methylmethcathinone-121522-CFSRE-Toxicology-Report.pdf",
+        "last_modified": "2022-12-15",
         "valid": true
     },
     {
@@ -456,6 +476,7 @@
         "exact_mass_[m+h]+": "275.1503",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/ADB-INACA-121422-NMSLabs-Report.pdf",
+        "last_modified": "2022-12-14",
         "valid": true
     },
     {
@@ -477,6 +498,7 @@
         "exact_mass_[m+h]+": "434.1533",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/CUMYL-TsINACA-121322-CFSRE-Toxicology-Report.pdf",
+        "last_modified": "2022-12-13",
         "valid": true
     },
     {
@@ -499,6 +521,7 @@
         "exact_mass_[m+h]+": "315.0128",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Desalkylgidazepam-120922-CFSRE-Toxicology-Report.pdf",
+        "last_modified": "2022-12-09",
         "valid": true
     },
     {
@@ -520,6 +543,7 @@
         "exact_mass_[m+h]+": "327.1074",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Fluetizolam-120822-CFSRE-Toxicology-Report.pdf",
+        "last_modified": "2022-12-08",
         "valid": true
     },
     {
@@ -541,6 +565,7 @@
         "exact_mass_[m+h]+": "309.0902",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/4-Cl-Deschloroalprazolam-120722-CFSRE-Toxicology-Report.pdf",
+        "last_modified": "2022-12-07",
         "valid": true
     },
     {
@@ -564,6 +589,7 @@
         "exact_mass_[m+h]+": "387.0007",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Phenazolam-120622-CFSRE-Toxicology-Report.pdf",
+        "last_modified": "2022-12-06",
         "valid": true
     },
     {
@@ -587,6 +613,7 @@
         "exact_mass_[m+h]+": "234.1489",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Hydroxetamine-083122-CFSRE-Toxicology-Report.pdf",
+        "last_modified": "2022-08-31",
         "valid": true
     },
     {
@@ -610,6 +637,7 @@
         "exact_mass_[m+h]+": "250.1438",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-Propyl-Butylone-072122-CFSRE-Chemistry-Report.pdf",
+        "last_modified": "2022-07-21",
         "valid": true
     },
     {
@@ -631,6 +659,7 @@
         "exact_mass_[m+h]+": "365.2024",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/CH-FUBIATA-062122-CFSRE-Chemistry-Report.pdf",
+        "last_modified": "2022-06-21",
         "valid": true
     },
     {
@@ -652,6 +681,7 @@
         "exact_mass_[m+h]+": "290.1751",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-Cyclohexyl-Butylone-060922-CFSRE-Chemistry-Report.pdf",
+        "last_modified": "2022-06-09",
         "valid": true
     },
     {
@@ -675,6 +705,7 @@
         "exact_mass_[m+h]+": "409.1234",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/ADB-5Br-BINACA-055622-CFSRE-Chemistry-Report.pdf",
+        "last_modified": "2022-05-26",
         "valid": true
     },
     {
@@ -697,6 +728,7 @@
         "exact_mass_[m+h]+": "334.1550",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/BZO-4en-POXIZID-051922-CFSRE-Chemistry-Report.pdf",
+        "last_modified": "2022-05-19",
         "valid": true
     },
     {
@@ -719,6 +751,7 @@
         "exact_mass_[m+h]+": "353.0608",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/ADB-5Br-INACA-051722-CFSRE-Chemistry-Report.pdf",
+        "last_modified": "2022-05-17",
         "valid": true
     },
     {
@@ -741,6 +774,7 @@
         "exact_mass_[m+h]+": "368.0604",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/MDMB-5Br-INACA-051722-CFSRE-Chemistry-Report.pdf",
+        "last_modified": "2022-05-17",
         "valid": true
     },
     {
@@ -763,6 +797,7 @@
         "exact_mass_[m+h]+": "276.1594",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-Cyclohexyl-Methylone-050922-CFSRE-Chemistry-Report.pdf",
+        "last_modified": "2022-05-09",
         "valid": true
     },
     {
@@ -787,6 +822,7 @@
         "exact_mass_[m+h]+": "327.2431",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/CH-PIATA-042922-CFSRE-Chemistry-Report.pdf",
+        "last_modified": "2022-04-29",
         "valid": true
     },
     {
@@ -808,6 +844,7 @@
         "exact_mass_[m+h]+": "336.2322",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Dipyanone_031422_NMSLabs_Report.pdf",
+        "last_modified": "2022-03-14",
         "valid": false
     },
     {
@@ -828,6 +865,7 @@
         "exact_mass_[m+h]+": "374.2438",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/EDMB-PINACA_122021_CFSRE_Chemistry_Report.pdf",
+        "last_modified": "2021-12-20",
         "valid": true
     },
     {
@@ -853,6 +891,7 @@
         "exact_mass_[m+h]+": "250.1438",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/NN-Dimethylpentylone_121721_CFSRE_Toxicology_Report.pdf",
+        "last_modified": "2021-12-17",
         "valid": true
     },
     {
@@ -875,6 +914,7 @@
         "exact_mass_[m+h]+": "311.2118",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Naphthyl-U-47700_121621_CFSRE_Chemistry_Report.pdf",
+        "last_modified": "2021-12-16",
         "valid": true
     },
     {
@@ -896,6 +936,7 @@
         "exact_mass_[m+h]+": "250.1624",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Tenocyclidine_121521_CFSRE_Toxicology_Report.pdf",
+        "last_modified": "2021-12-15",
         "valid": true
     },
     {
@@ -918,6 +959,7 @@
         "exact_mass_[m+h]+": "329.1835",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Trifluoromethyl-U-47700_121421_CFSRE_Toxicology_Report.pdf",
+        "last_modified": "2021-12-14",
         "valid": true
     },
     {
@@ -940,6 +982,7 @@
         "exact_mass_[m+h]+": "409.2234",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-Piperidinyl_Etonitazene_112221_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2021-11-22",
         "valid": true
     },
     {
@@ -961,6 +1004,7 @@
         "exact_mass_[m+h]+": "379.2129",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/ADB-PHETINACA_111921_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2021-11-19",
         "valid": true
     },
     {
@@ -983,6 +1027,7 @@
         "exact_mass_[m+h]+": "362.1863",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/BZO-CHMOXIZID_111821_CFSRE_Chemistry_Report.pdf",
+        "last_modified": "2021-11-18",
         "valid": true
     },
     {
@@ -1005,6 +1050,7 @@
         "exact_mass_[m+h]+": "396.2082",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/ADB-FUBIATA_111721_CFSRE_Chemistry_Report.pdf",
+        "last_modified": "2021-11-17",
         "valid": true
     },
     {
@@ -1025,6 +1071,7 @@
         "exact_mass_[m+h]+": "333.0372",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Fluclotizolam_110521_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2021-11-05",
         "valid": true
     },
     {
@@ -1047,6 +1094,7 @@
         "exact_mass_[m+h]+": "354.1612",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/5F-BZO-POXIZID_101921_CFSRE_Chemistry_Report.pdf",
+        "last_modified": "2021-10-19",
         "valid": true
     },
     {
@@ -1069,6 +1117,7 @@
         "exact_mass_[m+h]+": "350.1863",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/BZO-HEXOXIZID_101921_CFSRE_Chemistry_Report.pdf",
+        "last_modified": "2021-10-19",
         "valid": true
     },
     {
@@ -1091,6 +1140,7 @@
         "exact_mass_[m+h]+": "336.1707",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/BZO-POXIZID_101921_CFSRE_Chemistry_Report.pdf",
+        "last_modified": "2021-10-19",
         "valid": true
     },
     {
@@ -1113,6 +1163,7 @@
         "exact_mass_[m+h]+": "338.2227",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Metodesnitazene_092221_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2021-09-22",
         "valid": true
     },
     {
@@ -1135,6 +1186,7 @@
         "exact_mass_[m+h]+": "289.1911",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/4-AcO-EPT_062921_NMSLabs_Report.pdf",
+        "last_modified": "2021-06-29",
         "valid": true
     },
     {
@@ -1157,6 +1209,7 @@
         "exact_mass_[m+h]+": "411.2391",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Protonitazene_052621_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2021-05-26",
         "valid": true
     },
     {
@@ -1178,6 +1231,7 @@
         "exact_mass_[m+h]+": "395.2078",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-Pyrrolidino_Etonitazene_051321_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2021-05-13",
         "valid": true
     },
     {
@@ -1200,6 +1254,7 @@
         "exact_mass_[m+h]+": "359.2442",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/ADB-HEXINACA_042921_CFSRE_Chemistry_Report.pdf",
+        "last_modified": "2021-04-29",
         "valid": true
     },
     {
@@ -1225,6 +1280,7 @@
         "exact_mass_[m+h]+": "304.1907",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Methylenedioxy-PV8_042321_CFSRE_Toxicology_Report.pdf",
+        "last_modified": "2021-04-23",
         "valid": true
     },
     {
@@ -1247,6 +1303,7 @@
         "exact_mass_[m+h]+": "371.1878",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Flunitazene_032621_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2021-03-26",
         "valid": true
     },
     {
@@ -1269,6 +1326,7 @@
         "exact_mass_[m+h]+": "343.2129",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/ADB-4en-PINACA_030421_NMSLabs_Report.pdf",
+        "last_modified": "2021-03-04",
         "valid": true
     },
     {
@@ -1293,6 +1351,7 @@
         "exact_mass_[m+h]+": "352.2383",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Etodesnitazene_022321_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2021-02-23",
         "valid": true
     },
     {
@@ -1314,6 +1373,7 @@
         "exact_mass_[m+h]+": "309.1168",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Deschloroetizolam_021621_NMSLabs_Report.pdf",
+        "last_modified": "2021-02-16",
         "valid": true
     },
     {
@@ -1339,6 +1399,7 @@
         "exact_mass_[m+h]+": "278.1670",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Cl-PCP_020421_CFSRE_Toxicology_Report.pdf",
+        "last_modified": "2021-02-04",
         "valid": true
     },
     {
@@ -1364,6 +1425,7 @@
         "exact_mass_[m+h]+": "262.1966",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/F-PCP_020421_CFSRE_Toxicology_Report.pdf",
+        "last_modified": "2021-02-04",
         "valid": true
     },
     {
@@ -1388,6 +1450,7 @@
         "exact_mass_[m+h]+": "370.2289",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/4F-ABINACA_012721_NMSLabs_Report.pdf",
+        "last_modified": "2021-01-27",
         "valid": true
     },
     {
@@ -1409,6 +1472,7 @@
         "exact_mass_[m+h]+": "425.2547",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Butonitazene_011521_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2021-01-15",
         "valid": true
     },
     {
@@ -1436,6 +1500,7 @@
         "exact_mass_[m+h]+": "415.1380",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Bromofentanyl_121720_CFSRE_Toxicology_Report.pdf",
+        "last_modified": "2020-12-17",
         "valid": true
     },
     {
@@ -1463,6 +1528,7 @@
         "exact_mass_[m+h]+": "371.1885",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Chlorofentanyl_121720_CFSRE_Toxicology_Report.pdf",
+        "last_modified": "2020-12-17",
         "valid": true
     },
     {
@@ -1491,6 +1557,7 @@
         "exact_mass_[m+h]+": "355.2180",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Fluorofentanyl_121720_CFSRE_Toxicology_Report.pdf",
+        "last_modified": "2020-12-17",
         "valid": true
     },
     {
@@ -1516,6 +1583,7 @@
         "exact_mass_[m+h]+": "234.1852",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/MeO-PCE_121020_CFSRE_Toxicology_Report.pdf",
+        "last_modified": "2020-12-10",
         "valid": true
     },
     {
@@ -1539,6 +1607,7 @@
         "exact_mass_[m+h]+": "391.2391",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/5F-EDMB-PICA_120120_NMSLabs_Report.pdf",
+        "last_modified": "2020-12-03",
         "valid": true
     },
     {
@@ -1563,6 +1632,7 @@
         "exact_mass_[m+h]+": "264.1758",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/4-Fluoro-3-Methyl-Alpha-PVP_120120_NMSLabs_Report.pdf",
+        "last_modified": "2020-12-01",
         "valid": true
     },
     {
@@ -1584,6 +1654,7 @@
         "exact_mass_[m+h]+": "331.2129",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/ADB-BINACA_111820_NMSLabs_Report.pdf",
+        "last_modified": "2020-11-18",
         "valid": true
     },
     {
@@ -1604,6 +1675,7 @@
         "exact_mass_[m+h]+": "287.2118",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/AP-238_111120_CFSRE_Toxicology_Report.pdf",
+        "last_modified": "2020-11-11",
         "valid": true
     },
     {
@@ -1625,6 +1697,7 @@
         "exact_mass_[m+h]+": "352.1323",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Adinazolam_081120_CFSRE_Toxicology_Report.pdf",
+        "last_modified": "2020-08-11",
         "valid": true
     },
     {
@@ -1645,6 +1718,7 @@
         "exact_mass_[m+h]+": "383.2078",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Metonitazene_073020_NMSLabs_Report.pdf",
+        "last_modified": "2020-07-30",
         "valid": true
     },
     {
@@ -1665,6 +1739,7 @@
         "exact_mass_[m+h]+": "400.1019",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Brorphine_071720_CFSRE_Toxicology_Report.pdf",
+        "last_modified": "2020-07-17",
         "valid": true
     },
     {
@@ -1686,6 +1761,7 @@
         "exact_mass_[m+h]+": "329.0622",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Metizolam_070620_NMSLabs_Report.pdf",
+        "last_modified": "2020-07-06",
         "valid": true
     },
     {
@@ -1708,6 +1784,7 @@
         "exact_mass_[m+h]+": "363.2078",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/4F-MDMB-BICA_070120_NMSLabs_Report.pdf",
+        "last_modified": "2020-07-01",
         "valid": true
     },
     {
@@ -1730,6 +1807,7 @@
         "exact_mass_[m+h]+": "377.2235",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/5F-EMB-PICA_061520_NMSLabs_Report.pdf",
+        "last_modified": "2020-06-15",
         "valid": true
     },
     {
@@ -1751,6 +1829,7 @@
         "exact_mass_[m+h]+": "250.1438",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Hexylone_060920_NMSLabs_Report.pdf",
+        "last_modified": "2020-06-09",
         "valid": true
     },
     {
@@ -1774,6 +1853,7 @@
         "exact_mass_[m+h]+": "368.2133",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/5F-CUMYL-PINACA_052920_NMSLabs_Report.pdf",
+        "last_modified": "2020-05-29",
         "valid": true
     },
     {
@@ -1797,6 +1877,7 @@
         "exact_mass_[m+h]+": "272.2009",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/alpha-PCYP_052720_NMSLabs_Report.pdf",
+        "last_modified": "2020-05-27",
         "valid": true
     },
     {
@@ -1819,6 +1900,7 @@
         "exact_mass_[m+h]+": "266.1551",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/4F-Ethylphenidate_050720_NMSLabs_Report.pdf",
+        "last_modified": "2020-05-07",
         "valid": true
     },
     {
@@ -1840,6 +1922,7 @@
         "exact_mass_[m+h]+": "353.0396",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Bromazolam_050120_NMSLabs_Report.pdf",
+        "last_modified": "2020-05-01",
         "valid": true
     },
     {
@@ -1863,6 +1946,7 @@
         "exact_mass_[m+h]+": "262.1802",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Methoxpropamine_041320_NMSLabs_Report.pdf",
+        "last_modified": "2020-04-13",
         "valid": true
     },
     {
@@ -1884,6 +1968,7 @@
         "exact_mass_[m+h]+": "287.2118",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/para-Methyl_AP-237_041320_NMSLabs_Report.pdf",
+        "last_modified": "2020-04-13",
         "valid": true
     },
     {
@@ -1905,6 +1990,7 @@
         "exact_mass_[m+h]+": "343.1338",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-Ethyl-U-47700_032420_Report.pdf",
+        "last_modified": "2020-03-24",
         "valid": true
     },
     {
@@ -1926,6 +2012,7 @@
         "exact_mass_[m+h]+": "297.1773",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/34-Difluoro-U-47700_031120_Report.pdf",
+        "last_modified": "2020-03-11",
         "valid": true
     },
     {
@@ -1947,6 +2034,7 @@
         "exact_mass_[m+h]+": "206.1539",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-ethyl_Pentedrone_022420_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2020-02-24",
         "valid": true
     },
     {
@@ -1970,6 +2058,7 @@
         "exact_mass_[m+h]+": "220.1696",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/3-HO-PCE_121219_NMSLabs_Report.pdf",
+        "last_modified": "2019-12-12",
         "valid": true
     },
     {
@@ -1992,6 +2081,7 @@
         "exact_mass_[m+h]+": "210.1289",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/4F-Pentedrone_120319_NMSLabs_Report.pdf",
+        "last_modified": "2019-12-03",
         "valid": true
     },
     {
@@ -2014,6 +2104,7 @@
         "exact_mass_[m+h]+": "363.2431",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/para-Methylcyclopropylfentanyl_112619_NMSLabs_Report.pdf",
+        "last_modified": "2019-11-26",
         "valid": true
     },
     {
@@ -2035,6 +2126,7 @@
         "exact_mass_[m+h]+": "339.1067",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-Methyl_U-47931E_112219_NMSLabs_Report.pdf",
+        "last_modified": "2019-11-22",
         "valid": true
     },
     {
@@ -2055,6 +2147,7 @@
         "exact_mass_[m+h]+": "411.2391",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Isotonitazene_112119_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2019-11-19",
         "valid": true
     },
     {
@@ -2077,6 +2170,7 @@
         "exact_mass_[m+h]+": "347.2493",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/2F-Viminol_120419_NMSLabs_Report.pdf",
+        "last_modified": "2019-11-15",
         "valid": true
     },
     {
@@ -2099,6 +2193,7 @@
         "exact_mass_[m+h]+": "302.0709",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/34-Dichloromethylphenidate_112119_NMSLabs_Report.pdf",
+        "last_modified": "2019-10-31",
         "valid": true
     },
     {
@@ -2121,6 +2216,7 @@
         "exact_mass_[m+h]+": "262.1802",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Isopropylphenidate_103119_NMSLabs_Report.pdf",
+        "last_modified": "2019-10-31",
         "valid": true
     },
     {
@@ -2142,6 +2238,7 @@
         "exact_mass_[m+h]+": "343.2016",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/MMB-4en-PICA_101119_NMSLabs_Report.pdf",
+        "last_modified": "2019-10-11",
         "valid": true
     },
     {
@@ -2163,6 +2260,7 @@
         "exact_mass_[m+h]+": "234.1852",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-ethyl_Heptedrone_093019_NMSLabs_Report.pdf",
+        "last_modified": "2019-09-30",
         "valid": true
     },
     {
@@ -2184,6 +2282,7 @@
         "exact_mass_[m+h]+": "304.1188",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Piperidylthiambutene_091819_NMSLabs_Report.pdf",
+        "last_modified": "2019-09-18",
         "valid": true
     },
     {
@@ -2206,6 +2305,7 @@
         "exact_mass_[m+h]+": "273.1961",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/AP-237_091619_NMSLabs_Report.pdf",
+        "last_modified": "2019-09-16",
         "valid": true
     },
     {
@@ -2228,6 +2328,7 @@
         "exact_mass_[m+h]+": "358.2125",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/MDMB-4en-PINACA_091219_CFSRE_Report.pdf",
+        "last_modified": "2019-09-12",
         "valid": true
     },
     {
@@ -2250,6 +2351,7 @@
         "exact_mass_[m+h]+": "248.2009",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-butyl_Hexedrone_070319_NMSLabs_Report.pdf",
+        "last_modified": "2019-07-03",
         "valid": true
     },
     {
@@ -2272,6 +2374,7 @@
         "exact_mass_[m+h]+": "327.0807",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Flualprazolam_062519_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2019-06-25",
         "valid": true
     },
     {
@@ -2293,6 +2396,7 @@
         "exact_mass_[m+h]+": "287.2118",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/2-Methyl_AP-237_072219_NMSLabs_Report.pdf",
+        "last_modified": "2019-06-21",
         "valid": true
     },
     {
@@ -2312,6 +2416,7 @@
         "exact_mass_[m+h]+": "313.1910",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Furanyl_UF-17_072219_NMSLabs_Report.pdf",
+        "last_modified": "2019-06-18",
         "valid": true
     },
     {
@@ -2331,6 +2436,7 @@
         "exact_mass_[m+h]+": "275.2118",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/UF-17_072219_NMSLabs_Report.pdf",
+        "last_modified": "2019-06-18",
         "valid": true
     },
     {
@@ -2355,6 +2461,7 @@
         "exact_mass_[m+h]+": "284.1281",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Benzylone_072219_NMSLabs_Report.pdf",
+        "last_modified": "2019-06-04",
         "valid": true
     },
     {
@@ -2380,6 +2487,7 @@
         "exact_mass_[m+h]+": "219.1492",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/4-HO-MET_052919_NMSLabs_Report.pdf",
+        "last_modified": "2019-05-29",
         "valid": true
     },
     {
@@ -2403,6 +2511,7 @@
         "exact_mass_[m+h]+": "278.1751",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-butyl_Pentylone_051619_NMSLabs_Report.pdf",
+        "last_modified": "2019-05-16",
         "valid": true
     },
     {
@@ -2425,6 +2534,7 @@
         "exact_mass_[m+h]+": "397.2486",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/25-Dimethoxyfentanyl_043019_NMSLabs_Report.pdf",
+        "last_modified": "2019-04-30",
         "valid": true
     },
     {
@@ -2448,6 +2558,7 @@
         "exact_mass_[m+h]+": "405.2173",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/para-Methoxyfuranylfentanyl_042319_NMSLabs_Report.pdf",
+        "last_modified": "2019-04-23",
         "valid": true
     },
     {
@@ -2471,6 +2582,7 @@
         "exact_mass_[m+h]+": "380.2333",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/1P-LSD_041719_NMSLabs_Report.pdf",
+        "last_modified": "2019-04-16",
         "valid": true
     },
     {
@@ -2493,6 +2605,7 @@
         "exact_mass_[m+h]+": "248.2009",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/NN-Diethyl_Hexedrone_031819_NMSLabs_Report.pdf",
+        "last_modified": "2019-03-18",
         "valid": true
     },
     {
@@ -2515,6 +2628,7 @@
         "exact_mass_[m+h]+": "322.1204",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/25C-NBOH_031119_NMSLabs_Report.pdf",
+        "last_modified": "2019-03-11",
         "valid": true
     },
     {
@@ -2536,6 +2650,7 @@
         "exact_mass_[m+h]+": "365.1972",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/APP-BINACA_030619_CFSRE_Report.pdf",
+        "last_modified": "2019-03-06",
         "valid": true
     },
     {
@@ -2558,6 +2673,7 @@
         "exact_mass_[m+h]+": "411.2078",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/5F-MPP-PICA_021319_NMSLabs_Report.pdf",
+        "last_modified": "2019-02-12",
         "valid": true
     },
     {
@@ -2580,6 +2696,7 @@
         "exact_mass_[m+h]+": "273.1598",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/4-Acetoxy-MALT_020419_NMSLabs_Report.pdf",
+        "last_modified": "2019-02-04",
         "valid": true
     },
     {
@@ -2604,6 +2721,7 @@
         "exact_mass_[m+h]+": "393.1973",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/FluoroFuranylfentanyl_012319_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2019-01-23",
         "valid": true
     },
     {
@@ -2625,6 +2743,7 @@
         "exact_mass_[m+h]+": "364.2031",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/4F-MDMB-BINACA_011118_NMSLabs_Report.pdf",
+        "last_modified": "2019-01-11",
         "valid": true
     },
     {
@@ -2647,6 +2766,7 @@
         "exact_mass_[m+h]+": "182.1340",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/4-Fluoroethamphetamine_010319_NMSLabs_Report.pdf",
+        "last_modified": "2019-01-03",
         "valid": true
     },
     {
@@ -2667,6 +2787,7 @@
         "exact_mass_[m+h]+": "320.1142",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Nitrazolam_121918_NMSLabs_Report.pdf",
+        "last_modified": "2018-12-19",
         "valid": true
     },
     {
@@ -2690,6 +2811,7 @@
         "exact_mass_[m+h]+": "212.0837",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/4-CDMC_103018_NMSLabs_Report.pdf",
+        "last_modified": "2018-10-30",
         "valid": true
     },
     {
@@ -2712,6 +2834,7 @@
         "exact_mass_[m+h]+": "246.1852",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/alpha-PiHP_111618_NMSLabs_Report.pdf",
+        "last_modified": "2018-10-30",
         "valid": true
     },
     {
@@ -2733,6 +2856,7 @@
         "exact_mass_[m+h]+": "325.0910",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/U-47931E_103018_NMSLabs_Report.pdf",
+        "last_modified": "2018-10-30",
         "valid": true
     },
     {
@@ -2754,6 +2878,7 @@
         "exact_mass_[m+h]+": "285.1034",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/MFUBINAC_103018_NMSLabs_Report.pdf",
+        "last_modified": "2018-10-18",
         "valid": true
     },
     {
@@ -2777,6 +2902,7 @@
         "exact_mass_[m+h]+": "365.1739",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/5Cl-AB-PINACA_100518_NMSLabs_Report.pdf",
+        "last_modified": "2018-10-05",
         "valid": true
     },
     {
@@ -2803,6 +2929,7 @@
         "exact_mass_[m+h]+": "393.2097",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/5F-AB-PFUPPYCA_100518_CFSRE_Report.pdf",
+        "last_modified": "2018-10-05",
         "valid": true
     },
     {
@@ -2829,6 +2956,7 @@
         "exact_mass_[m+h]+": "222.1289",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/2F-Deschloroketamine_090418_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2018-09-04",
         "valid": true
     },
     {
@@ -2850,6 +2978,7 @@
         "exact_mass_[m+h]+": "290.1751",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/34-Methylenedioxy-alpha-PHP_090418_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2018-09-04",
         "valid": true
     },
     {
@@ -2872,6 +3001,7 @@
         "exact_mass_[m+h]+": "236.1281",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Eutylone_090418_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2018-09-04",
         "valid": true
     },
     {
@@ -2895,6 +3025,7 @@
         "exact_mass_[m+h]+": "385.2274",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Phenylfentanyl_090418_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2018-09-04",
         "valid": true
     },
     {
@@ -2917,6 +3048,7 @@
         "exact_mass_[m+h]+": "250.1438",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Tertylone_080618_NMSLabs_Report.pdf",
+        "last_modified": "2018-08-06",
         "valid": true
     },
     {
@@ -2940,6 +3072,7 @@
         "exact_mass_[m+h]+": "377.2235",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/5F-MDMB-PICA_072418_ChemistryAndToxicology_Report.pdf",
+        "last_modified": "2018-07-31",
         "valid": true
     },
     {
@@ -2965,6 +3098,7 @@
         "exact_mass_[m+h]+": "217",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Deschloro-N-ethyl_Ketamine_060118_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2018-06-01",
         "valid": true
     },
     {
@@ -2987,6 +3121,7 @@
         "exact_mass_[m+h]+": "357.1495",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Isopropyl-U-47700_051818_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2018-05-18",
         "valid": true
     },
     {
@@ -3010,6 +3145,7 @@
         "exact_mass_[m+h]+": "305.1860",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Methylenedioxy-U-47700_051818_ToxicologyAnalyticalReport.pdf",
+        "last_modified": "2018-05-18",
         "valid": true
     },
     {
@@ -3032,6 +3168,7 @@
         "exact_mass_[m+h]+": "246.0447",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/34-Dichloroethcathinone_050418_NMSLabs_Report.pdf",
+        "last_modified": "2018-05-04",
         "valid": true
     },
     {
@@ -3054,6 +3191,7 @@
         "exact_mass_[m+h]+": "361.1911",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Benzylfuranylfentanyl_050118_NMSLabs_Report.pdf",
+        "last_modified": "2018-04-27",
         "valid": true
     },
     {
@@ -3074,6 +3212,7 @@
         "exact_mass_[m+h]+": "264.1594",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-ethyl_Hexylone_041918_NMSLabs_Report.pdf",
+        "last_modified": "2018-04-19",
         "valid": true
     },
     {
@@ -3095,6 +3234,7 @@
         "exact_mass_[m+h]+": "392.2344",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/5F-EDMB-PINACA_041018_NMSLabs_Report.pdf",
+        "last_modified": "2018-04-10",
         "valid": true
     },
     {
@@ -3116,6 +3256,7 @@
         "exact_mass_[m+h]+": "247.1805",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-methyl_Norfentanyl_041318_NMSLabs_Report.pdf",
+        "last_modified": "2018-04-10",
         "valid": true
     },
     {
@@ -3137,6 +3278,7 @@
         "exact_mass_[m+h]+": "295.2169",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Despropionyl_3-Methylfentanyl_032718_NMSLabs_Report.pdf",
+        "last_modified": "2018-03-27",
         "valid": true
     },
     {
@@ -3158,6 +3300,7 @@
         "exact_mass_[m+h]+": "295.2169",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Despropionyl_ortho-Methylfentanyl_032718_NMSLabs_Report.pdf",
+        "last_modified": "2018-03-27",
         "valid": true
     },
     {
@@ -3183,6 +3326,7 @@
         "exact_mass_[m+h]+": "367.2380",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/ortho-Methylmethoxyacetylfentanyl_032718_NMSLabs_Report.pdf",
+        "last_modified": "2018-03-27",
         "valid": true
     },
     {
@@ -3205,6 +3349,7 @@
         "exact_mass_[m+h]+": "343.1338",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/U-48800_032618_NMSLabs_Report.pdf",
+        "last_modified": "2018-03-26",
         "valid": true
     },
     {
@@ -3227,6 +3372,7 @@
         "exact_mass_[m+h]+": "392.2696",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/Adamantyl-CHMINACA_032018_NMSLabs_Report.pdf",
+        "last_modified": "2018-03-20",
         "valid": true
     },
     {
@@ -3248,6 +3394,7 @@
         "exact_mass_[m+h]+": "316.1907",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/25E-NBOH_022718_NMSLabs_Report.pdf",
+        "last_modified": "2018-02-27",
         "valid": true
     },
     {
@@ -3270,6 +3417,7 @@
         "exact_mass_[m+h]+": "220.1696",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/4-MDEC_022718_NMSLabs_Report.pdf",
+        "last_modified": "2018-02-27",
         "valid": true
     },
     {
@@ -3292,6 +3440,7 @@
         "exact_mass_[m+h]+": "470.0823",
         "source_name": "cfsre",
         "source_url": "https://www.cfsre.org/images/monographs/N-Acetyl_25I-NBOMe_022718_NMSLabs_Report.pdf",
+        "last_modified": "2018-02-27",
         "valid": true
     }
 ]

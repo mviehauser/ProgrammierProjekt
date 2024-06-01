@@ -40,6 +40,7 @@ def run_webscraper(mode):
             exit()
     
     num_failed_extractions = 0
+    date_strings = incL.fetch_date_strings()
 
     for i, link in enumerate(links_to_extract):
         pdfU.download_pdf(link)
@@ -53,6 +54,7 @@ def run_webscraper(mode):
             ed.format_names(data)
             data["source_url"] = link
             validate_data(data)
+            data["last_modified"] = date_strings[i]
             data_collection.append(data)
             logger.info(f"Successfully extracted {link} [{i+1}/{len(links_to_extract)}]")
         else:
