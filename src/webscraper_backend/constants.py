@@ -21,18 +21,24 @@ CFSRE_URL = "https://www.cfsre.org/nps-discovery/monographs"
 
 DATA = {
     "names" : [],
-    "iupac_name": "",
-    "classes" : [],
+    "iupac_names": [],
+    "categories" : [],
     "inchi" : "",
     "inchi_key": "",
     "smiles" : "",
     "cas_num": "",
     "formula": "",
-    "molecular_mass": "",
-    "molecular_ion_[m+]": "",
-    "exact_mass_[m+h]+": "",
-    "source_name" : "cfsre",
-    "source_url" : "",
+    "molecular_mass": 0,
+    "source" : {
+        "name" : "cfsre",
+        "url" : "",
+    },
     "last_modified" : None,
-    "valid" : None,
+    "validated" : None,
+    "version" : "1.0",
+    "deleted" : False,
+    "details" : {
+        "molecular_ion_[m+]": "",
+        "exact_mass_[m+h]+": ""
+    }
 }

@@ -64,9 +64,9 @@ def run_webscraper(mode):
             ed.add_smiles(data)
             ed.format_formula(data)
             ed.format_names(data)
-            data["source_url"] = link
+            data["source"]["url"] = link
             validate_data(data)
-            data["last_modified"] = date_strings[i]
+            data["last_modified"] = date_strings[i] + "T00:00:00Z"
             data_collection.append(data)
             logger.info(f"Successfully extracted {link} [{i+1}/{len(links_to_extract)}]")
         else:
@@ -94,4 +94,4 @@ if __name__ == '__main__':
         # mode=1, load everything completely new
         # mode=2, load only new Substances
         # mode=3, load new Substances as well as changes to existing data
-        run_webscraper(2)
+        run_webscraper(1)
