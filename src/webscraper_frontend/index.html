@@ -25,12 +25,12 @@
           <label for="names">Names</label>
         </div>
         <div>
-          <input type="radio" id="iupac_name" name="drone" value="iupac_name" />
-          <label for="iupac_name">IUPAC Name</label>
+          <input type="radio" id="iupac_names" name="drone" value="iupac_names" />
+          <label for="iupac_names">IUPAC Names</label>
         </div>
         <div>
-          <input type="radio" id="classes" name="drone" value="classes" />
-          <label for="classes">Classes</label>
+          <input type="radio" id="categories" name="drone" value="categories" />
+          <label for="categories">Categories</label>
         </div>
         <div>
           <input type="radio" id="inchi_key" name="drone" value="inchi_key" />
@@ -89,8 +89,8 @@
         <thead>
           <tr>
             <th>Names</th>
-            <th>IUPAC Name</th>
-            <th>Classes</th>
+            <th>IUPAC Names</th>
+            <th>Categories</th>
             <th>InChI Key</th>
             <th>Smiles</th>
             <th>CAS Number</th>
@@ -104,31 +104,23 @@
     <script src="../JSON-files/js_data.js"></script>
     <script>
 
-      document.addEventListener("DOMContentLoaded", function () {
-        const firstLoadTransformedData = transformData(Data);
-        const firstLoadModifiedData = removeEntries(firstLoadTransformedData);
-        getTD(firstLoadModifiedData);
-      });
-
-      // transformJSON() und transformData() dienen dazu, die ursprüngliche JSON-Objekte so ab zu ändern, dass sie in der Suchmaschine angewandt werden können
+      // transformJSON() und transformData() dienen dazu, die ursprüngliche JSON-Objekte so ab zu ändern, 
+      // dass sie in der Suchmaschine angewandt werden können
       function transformJSON(originalObj) {
+
         const namesString = originalObj.names.join(", ");
-        const classesString = originalObj.classes.join(", ");
+        const categoriesString = originalObj.categories.join(", ");
 
         const transformedObj = {
           names: namesString,
-          iupac_name: originalObj.iupac_name,
-          classes: classesString,
+          iupac_names: originalObj.iupac_names,
+          categories: categoriesString,
           inchi: originalObj.inchi,
           inchi_key: originalObj.inchi_key,
           smiles: originalObj.smiles,
           cas_num: originalObj.cas_num,
           formula: originalObj.formula,
           molecular_mass: originalObj.molecular_mass,
-          "molecular_ion_[m+]": originalObj["molecular_ion_[m+]"],
-          "exact_mass_[m+h]+": originalObj["exact_mass_[m+h]+"],
-          source_name: originalObj.source_name,
-          source_url: originalObj.source_url,
         };
 
         return transformedObj;
@@ -161,30 +153,29 @@
 
       const searchTerm = document.getElementById("searchTerm");
 
-      //removeEntries(data) entfernt alle Einträge aus jedem JSON-Objekt im übergebenen JSON-File, die nicht gebraucht/angezeigt werden (sollen)
-      function removeEntries(data) {
-        const modifiedData = data.map((entry) => {
-          const modifiedEntry = { ...entry };
-          delete modifiedEntry["inchi"];
-          delete modifiedEntry["molecular_ion_[m+]"];
-          delete modifiedEntry["exact_mass_[m+h]+"];
-          delete modifiedEntry["source_name"];
-          delete modifiedEntry["source_url"];
-          delete modifiedEntry["valid"];
-          return modifiedEntry;
-        });
-        return modifiedData;
-      }
-
       //filterData(dataObjects) & searchJSON(json, searchTerm) dienen dazu, die searchProperty (radio buttons) und den searchTerm (text field) abzuspeichern
       //und durchsuchen im übergebenen JSON-file die jeweilige property nach dem jeweiligen searchTerm
       function filterData(dataObjects) {
         const searchTermText = searchTerm.value;
         const searchProperty = selectedRadioButton;
 
-        function searchJSON(json, searchTerm) {
+        if(searchProperty === "molecular_mass"){
+          const molecularMassResults = [];
+          dataObjects.forEach((entry) => {
+            var molecularMassString = entry["molecular_mass"];
+            var molecularMass = parseFloat(molecularMassString);
+            var upperLimit = parseFloat(searchTermText) + 0.5;
+            var lowerLimit = parseFloat(searchTermText) - 0.5;
+            if(molecularMass <= upperLimit && molecularMass >= lowerLimit){
+              molecularMassResults.push(entry);
+            }
+          });
+          return molecularMassResults;
+
+        } else{
+          
           const results = [];
-          json.forEach((entry) => {
+          dataObjects.forEach((entry) => {
             if (
               entry[searchProperty]
                 .toLowerCase()
@@ -195,8 +186,6 @@
           });
           return results;
         }
-
-        return searchJSON(dataObjects, searchTermText);
       }
 
       // getTD(data) lädt alle entries des übergebenen JSON-files in den tbody der HTML-Tabelle
@@ -206,8 +195,8 @@
         data.forEach((entry) => {
           tags += `<tr>
             <td>${entry.names}</td>
-            <td>${entry.iupac_name}</td>
-            <td>${entry.classes}</td>
+            <td>${entry.iupac_names}</td>
+            <td>${entry.categories}</td>
             <td>${entry.inchi_key}</td>
             <td>${entry.smiles}</td>
             <td>${entry.cas_num}</td>
@@ -221,12 +210,8 @@
       // Main-Funktion: Wird beim Klicken auf den Load Drugs Button getriggered und ruft sämtliche andere Funktionen im Programm auf
       function loadDrugs() {
         const transformedData = transformData(Data);
-
         data = filterData(transformedData);
-
-        modifiedData = removeEntries(data);
-
-        getTD(modifiedData);
+        getTD(data);
       }
     </script>
   </body>
