@@ -8,10 +8,11 @@ from constants import CFSRE_URL
 import pathmanagement
 import logger_config
 import incremental_loading as incL
+from json_merger import merge_json_files
 
 def run_webscraper(mode):
     incL.check_mode(mode)
-    JSON_PATH, LINK_ARCHIVE_PATH, JS_DATA_PATH, LOG_PATH = pathmanagement.create_file_paths()
+    JSON_PATH, LINK_ARCHIVE_PATH, JS_DATA_PATH, LOG_PATH, JSON_ALL_PATH = pathmanagement.create_file_paths()
     # If you want to change shown logging level, change the argument in setup_logger(level=)
     logger = logger_config.setup_logger(LOG_PATH, level=logging.DEBUG)
     logger.info(f"Programm is starting in mode {mode}")
@@ -75,15 +76,27 @@ def run_webscraper(mode):
             
         pdfU.delete_file(local_pdf_filename)
 
+
     logger.info(f"Was able to extract {len(links_to_extract) - num_failed_extractions} / {len(links_to_extract)} PDFs")
     # Create a link archive that helps with incremential loading
     incL.archive_links(found_links, LINK_ARCHIVE_PATH)
     
+    # Create a .json file from our own data
     with open(JSON_PATH, mode="w") as json_file:
         json.dump(data_collection, json_file, indent=4)
     logger.info(f"Created json-file with {len(data_collection)} substances under {JSON_PATH}.")
 
-    # Create a .js file for the frontend
+    # Collecting the data from the other Teams
+    merged_data = merge_json_files()
+    data_collection.extend(merged_data)    
+    logger.info(f"Collected data with {len(merged_data)} elements from the other Teams ")
+
+    # Create a .json file with the data from all Teams (including our own data)
+    with open(JSON_ALL_PATH, mode="w") as json_file:
+        json.dump(data_collection, json_file, indent=4)
+    logger.info(f"Created json-file with {len(data_collection)} substances under {JSON_ALL_PATH}.")
+
+    # Create a .js file for the frontend from all_data 
     js_code = f"const Data = {json.dumps(data_collection)}"
     with open(JS_DATA_PATH, mode="w") as js_file:
         js_file.write(js_code)
