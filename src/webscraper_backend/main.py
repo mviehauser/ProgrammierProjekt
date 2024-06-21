@@ -40,7 +40,7 @@ def run_webscraper(mode):
 
         for found_link, date_string in zip(found_links, date_strings):
             for data in data_collection:
-                if found_link == data["source_url"] and incL.date_string_to_date(data["last_modified"]) < incL.date_string_to_date(date_string):
+                if found_link == data["source"]["url"] and incL.date_string_to_date(data["last_modified"]) < incL.date_string_to_date(date_string):
                     modified_pdf_links.append(found_link)
                     data_collection.remove(data)
                     break
@@ -89,7 +89,7 @@ def run_webscraper(mode):
     # Collecting the data from the other Teams
     merged_data = merge_json_files()
     data_collection.extend(merged_data)    
-    logger.info(f"Collected data with {len(merged_data)} elements from the other Teams ")
+    logger.info(f"Integrated data with {len(merged_data)} elements from other teams.")
 
     # Create a .json file with the data from all Teams (including our own data)
     with open(JSON_ALL_PATH, mode="w") as json_file:
@@ -107,4 +107,4 @@ if __name__ == '__main__':
         # mode=1, load everything completely new
         # mode=2, load only new Substances
         # mode=3, load new Substances as well as changes to existing data
-        run_webscraper(1)
+        run_webscraper(2)

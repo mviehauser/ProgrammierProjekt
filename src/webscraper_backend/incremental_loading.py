@@ -50,6 +50,7 @@ def fetch_date_strings():
     return dates
 
 def date_string_to_date(date_string):
+    date_string = date_string.replace("T00:00:00Z", '')
     [year, month, day] = date_string.split("-")
     return datetime(int(year), int(month), int(day))
 
@@ -66,3 +67,4 @@ if __name__ == "__main__":
     print(dates)
     print(len(dates))
     print(date_string_to_date(dates[0]) > date_string_to_date(dates[1]))
+    print(date_string_to_date("2023-11-30T00:00:00Z"))
