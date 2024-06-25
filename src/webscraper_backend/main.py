@@ -107,4 +107,4 @@ if __name__ == '__main__':
         # mode=1, load everything completely new
         # mode=2, load only new Substances
         # mode=3, load new Substances as well as changes to existing data
-        run_webscraper(2)
+        run_webscraper(1)

@@ -78,7 +78,7 @@
     </div>
     <div id="readyInfoDiv">
       If the Load Drugs button is clicked without having entered a search term,
-      all data will be loaded.
+      the first 100 elements will be loaded.
     </div>
 
     <div id="buttonContainer">
@@ -158,6 +158,12 @@
       function filterData(dataObjects) {
         const searchTermText = searchTerm.value;
         const searchProperty = selectedRadioButton;
+
+        // If searchTerm is empty, only the first 100 Elements are shown in the GUI
+        if(searchTermText === ""){
+          const slicedToFirstHundred = dataObjects.slice(0, 100);
+          return slicedToFirstHundred;
+        }
 
         if(searchProperty === "molecular_mass"){
           const molecularMassResults = [];

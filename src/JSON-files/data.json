@@ -1,6 +1,37 @@
 [
     {
         "names": [
+            "MMB-4en-PINACA",
+            "MMB-P-4en-INACA",
+            "4en-MMB-PINACA"
+        ],
+        "iupac_names": [
+            "Methyl 3-methyl-2-[(1-pent-4-enylindazole-3-carbonyl)amino]butanoate"
+        ],
+        "categories": [
+            "Synthetic Cannabinoid"
+        ],
+        "inchi": "InChI=1S/C19H25N3O3/c1-5-6-9-12-22-15-11-8-7-10-14(15)17(21-22)18(23)20-16(13(2)3)19(24)25-4/h5,7-8,10-11,13,16H,1,6,9,12H2,2-4H3,(H,20,23)",
+        "inchi_key": "UJELURFNWPRFMM-UHFFFAOYSA-N",
+        "smiles": "C=CCCCn1nc(C(=O)NC(C(=O)OC)C(C)C)c2ccccc21",
+        "cas_num": "2659308-41-3",
+        "formula": "C19H25N3O3",
+        "molecular_mass": 343.42,
+        "source": {
+            "name": "cfsre",
+            "url": "https://www.cfsre.org/images/monographs/MMB-4en-PINACA-New-Drug-Monograph-NPS-Discovery.pdf"
+        },
+        "last_modified": "2024-06-20T00:00:00Z",
+        "validated": true,
+        "version": "1.0",
+        "deleted": false,
+        "details": {
+            "molecular_ion_[m+]": "343",
+            "exact_mass_[m+h]+": "344.1969"
+        }
+    },
+    {
+        "names": [
             "ortho-Methylfentanyl",
             "o-Methylfentanyl",
             "ortho-Methyl Fentanyl"
@@ -4633,37 +4664,6 @@
         "details": {
             "molecular_ion_[m+]": "469",
             "exact_mass_[m+h]+": "470.0823"
-        }
-    },
-    {
-        "names": [
-            "MMB-4en-PINACA",
-            "MMB-P-4en-INACA",
-            "4en-MMB-PINACA"
-        ],
-        "iupac_names": [
-            "Methyl 3-methyl-2-[(1-pent-4-enylindazole-3-carbonyl)amino]butanoate"
-        ],
-        "categories": [
-            "Synthetic Cannabinoid"
-        ],
-        "inchi": "InChI=1S/C19H25N3O3/c1-5-6-9-12-22-15-11-8-7-10-14(15)17(21-22)18(23)20-16(13(2)3)19(24)25-4/h5,7-8,10-11,13,16H,1,6,9,12H2,2-4H3,(H,20,23)",
-        "inchi_key": "UJELURFNWPRFMM-UHFFFAOYSA-N",
-        "smiles": "C=CCCCn1nc(C(=O)NC(C(=O)OC)C(C)C)c2ccccc21",
-        "cas_num": "2659308-41-3",
-        "formula": "C19H25N3O3",
-        "molecular_mass": 343.42,
-        "source": {
-            "name": "cfsre",
-            "url": "https://www.cfsre.org/images/monographs/MMB-4en-PINACA-New-Drug-Monograph-NPS-Discovery.pdf"
-        },
-        "last_modified": "2024-06-20T00:00:00Z",
-        "validated": true,
-        "version": "1.0",
-        "deleted": false,
-        "details": {
-            "molecular_ion_[m+]": "343",
-            "exact_mass_[m+h]+": "344.1969"
         }
     }
 ]
