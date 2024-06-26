@@ -20,7 +20,7 @@ def validate_data(data):
     
     # Compare and validate
     same_formula = calculated_formula == data["formula"]
-    nearly_same_mass = abs(data["molecular_mass"] - calculated_mw) < 0.1
+    nearly_same_mass = abs(data["molecular_mass"] - calculated_mw) < 0.05
 
     data["validated"] = same_formula and nearly_same_mass
 

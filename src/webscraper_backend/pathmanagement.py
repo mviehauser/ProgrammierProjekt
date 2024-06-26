@@ -1,20 +1,8 @@
 import os
 
 def create_file_paths():
-    current_dir = os.getcwd()
-    if "webscraper_backend" in current_dir:
-        webscraper_backend_dir = current_dir
-        src_dir = os.path.abspath(os.path.join(webscraper_backend_dir, ".."))
-
-    elif "src" in current_dir:
-        src_dir = current_dir
-        webscraper_backend_dir = os.path.join(src_dir, "webscraper_backend")
-
-    else:
-        ProgrammierProjekt_dir = current_dir
-        src_dir = os.path.join(ProgrammierProjekt_dir, "src")
-        webscraper_backend_dir = os.path.join(src_dir, "webscraper_backend")
-    
+    webscraper_backend_dir = os.path.dirname(__file__)
+    src_dir = os.path.dirname(webscraper_backend_dir)  
 
     JSON_dir = os.path.join(src_dir, "JSON-files")
 
